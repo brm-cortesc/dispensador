@@ -9,11 +9,10 @@
 		return $d;
 	}
 }
-//https://twitter.com/i/profiles/show/OldSpiceLA/timeline?include_available_features=1&include_entities=1&last_note_ts=531&max_position=610439773023543296&reset_error_state=false
 function asd($hastag=null,$since=null){
 	$key = 'WDTlXe9etTsofPrDtZskFzKwf';
 	$secret = 'YTQp3f2KLC02pTMylDDkfGPVEYq1u886p8FDBdpZHUTTrMNuVT';
-   	$api_endpoint2 = ($hastag==null) ? $since :'?q=%40'.$hastag.'&src=savs&max_position&result_type=mixed' ; 
+   	$api_endpoint2 = ($hastag==null) ? $since :'?q=%40'.$hastag.'&src=savs' ; 
    	$api_endpoint =  'https://api.twitter.com/1.1/search/tweets.json'.$api_endpoint2; 
 	// request token
 	$basic_credentials = base64_encode($key.':'.$secret);
@@ -33,26 +32,21 @@ function asd($hastag=null,$since=null){
 		curl_setopt($br, CURLOPT_RETURNTRANSFER, true);
 		$data = curl_exec($br);
 		curl_close($br);
-	  
 		// do_something_here_with($data);
 		return objectToArray(json_decode($data));
 	}
 }
-
 echo"<pre>";
 $a1=asd("OldSpiceLA",null);
 print_r($a1);
+die;
 $bandera=1;
-
+$n=0;
 while($bandera>0){
-
 	$a1=asd(null,$a1['search_metadata']['next_results']);
-	/*$a1=asd(null,"?q=%40OldSpiceLA&include_entities=1&result_type=mixed&max_id=".$max_id);*/
 	print_r($a1);
-
-	die;
-
+	$bandera=($ultimoId==$max_id)?-1:1;
+	$ultimoId=$max_id;
 	$n++;
-	sleep(30);
 	if ($n==3){die;}
 }

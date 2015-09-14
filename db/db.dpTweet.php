@@ -11,6 +11,7 @@ class DataObject_DpTweet extends DB_DataObject
     public $__table = 'dp_tweet';                        // table name
     public $id;                              // int(10)  not_null primary_key auto_increment
     public $idHashtag;                       // int(10)  
+    public $idTweet;                         // string(255)  
     public $arroba;                          // string(20)  
     public $tweet;                           // string(255)  
     public $avatar;                          // string(255)  
@@ -24,6 +25,7 @@ class DataObject_DpTweet extends DB_DataObject
          return array(
              'id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'idHashtag' =>  DB_DATAOBJECT_INT,
+             'idTweet' =>  DB_DATAOBJECT_STR,
              'arroba' =>  DB_DATAOBJECT_STR,
              'tweet' =>  DB_DATAOBJECT_STR,
              'avatar' =>  DB_DATAOBJECT_STR,
@@ -44,6 +46,7 @@ class DataObject_DpTweet extends DB_DataObject
     function defaults() // column default values 
     {
          return array(
+             'idTweet' => '',
              'arroba' => '',
              'tweet' => '',
              'avatar' => '',

@@ -1,9 +1,61 @@
 <?php
 
-class ManejaTweets{
+class ManejaTweets
+{
+	//Función para insertar un registro
+	function setTweet($tabla = "Tweet"){
 
-		//Funciï¿½n trae los hashtag a buscar
-	function getHashtags($tipo="KitkatTuitCuenta"){
+		//Crea una nueva instancia de Tweets a partir de DataObject
+		$objDBO = DB_DataObject::Factory($tabla);
+		// Trae los campos de la tabla usuario;
+		$campos = $objDBO->table();
+		unset($campos["fecha"]);
+		unset($campos["id"]);
+
+		$resultado = false;
+		foreach($campos as $key => $value){
+			//$objDBO->$key = utf8_decode($this->$key);
+			$objDBO->$key = $this->$key;
+		}
+		$objDBO->fecha = date("Y-m-d H:i:s");
+
+		//Inserta el objeto DBO
+		$ret = $objDBO->insert();
+		
+		//Libera el objeto DBO
+		$objDBO->free();
+		
+		return($ret);
+		
+	}
+	
+	//Función envía Lamparazo
+	function sendTweet($tabla = "Tweet"){
+		//Crea una nueva instancia de Tweets a partir de DataObject
+		$objDBO = DB_DataObject::Factory($tabla);
+		$objDBO->publicado = 'N';
+		
+		$ret = false;
+		$objDBO->find();
+		if($objDBO->fetch()){
+			$ret = true;
+			$obj2DBO = DB_DataObject::Factory($tabla);
+			
+			$obj2DBO->get($objDBO->id);
+			$obj2DBO->publicado = 'S';
+			$obj2DBO->update();
+			
+			$obj2DBO->free();
+			
+			$this->profile_image_url = $objDBO->profile_image_url;
+		}
+		$objDBO->free();
+		
+		return($ret);
+	}
+	
+	//Función trae los hashtag a buscar
+	function getHashtags($tipo="TweetHashtag"){
 		//Crea una nueva instancia de Hashtag a partir de DataObject
 		$objDBO = DB_DataObject::Factory($tipo);
 		
@@ -28,30 +80,45 @@ class ManejaTweets{
 		}
 		
 		$objDBO->free();
+		//$ret='OldSpiceLA';
 		
 		return($ret);
 	}
 
-	//Funciï¿½n para insertar un registro
-	function setTweetGeneral($tipo="KitkatTuitGeneral"){
+	//Función para insertar un registro
+	function setTweetGeneral($tipo="TweetGeneral"){
 		//Crea una nueva instancia de Tweets a partir de DataObject
-    //DB_DataObject::debugLevel(1);
 		$objDBO = DB_DataObject::Factory($tipo);
 		// Trae los campos de la tabla usuario;
 		$campos = $objDBO->table();
+		unset($campos["fecha"]);
+		unset($campos["id"]);
+		
+		unset($campos["geo"]);
+		unset($campos["coordinates"]);
+		unset($campos["place"]);
+		unset($campos["contributors"]);
   		
 		$resultado = false;
-		//printVar($campos,'campos');
+		$i=0;
 		foreach($campos as $key => $value){
-      
-			//$objDBO->$key = utf8_encode($this->$key);
-			$objDBO->$key = $this->$key;
+
+			$i++;
+/*			printVar($key);
+			printVar($this->$key);
+			if ($i==4) {
+				die;
+			}*/
+			
+/*			echo $key;
+			$objDBO->$key = utf8_decode($this->$key);*/
+			$objDBO->$key = (isset($this->$key)!="")?utf8_decode($this->$key):'';
 		}
 		$objDBO->fecha = date("Y-m-d H:i:s");
 
 		//Inserta el objeto DBO
 		$ret = $objDBO->insert();
-		//printVar($ret, 'ret');
+		
 		//Libera el objeto DBO
 		$objDBO->free();
 		
@@ -59,8 +126,8 @@ class ManejaTweets{
 		
 	}
 	
-	//Funciï¿½n para insertar un registro
-	function setPostGeneral($tipo="KitkatTuitGeneral"){
+	//Función para insertar un registro
+	function setPostGeneral($tipo="TweetGeneral"){
 		//Crea una nueva instancia de Tweets a partir de DataObject
 		$objDBO = DB_DataObject::Factory($tipo);
 		// Trae los campos de la tabla usuario;
@@ -101,10 +168,10 @@ class ManejaTweets{
 		
 	}
 	
-	//Funciï¿½n envï¿½a Pulso
-	function sendTweetGeneral($idHashtag = 13){
+	//Función envía Pulso
+	function sendTweetGeneral($idHashtag = 1){
 		//Crea una nueva instancia de Tweets a partir de DataObject
-		$objDBO = DB_DataObject::Factory("KitkatTuitGeneral");
+		$objDBO = DB_DataObject::Factory("TweetGeneral");
 		$objDBO->publicado = 'N';
 		$objDBO->idHashtag = $idHashtag;
 		
@@ -113,7 +180,7 @@ class ManejaTweets{
 		$objDBO->find();
 		if($objDBO->fetch()){
 			$ret = true;
-			$obj2DBO = DB_DataObject::Factory("KitkatTuitGeneral");
+			$obj2DBO = DB_DataObject::Factory("TweetGeneral");
 			
 			$obj2DBO->get($objDBO->id);
 			$obj2DBO->publicado = 'S';
@@ -134,10 +201,10 @@ class ManejaTweets{
 		return($ret);
 	}
 	
-	//Funciï¿½n Trae el ï¿½ltimo Tweet Publicado
-	function getUltimoTweet($idHashtag ){
+	//Función Trae el último Tweet Publicado
+	function getUltimoTweet($idHashtag = 1){
 		//Crea una nueva instancia de Tweets a partir de DataObject
-		$objDBO = DB_DataObject::Factory("KitkatTuitGeneral");
+		$objDBO = DB_DataObject::Factory("TweetGeneral");
 		$objDBO->publicado = 'S';
 		$objDBO->idHashtag = $idHashtag;
 		
@@ -168,15 +235,14 @@ class ManejaTweets{
 	//Conteo de Tweets
 	function getConteoTweets(){
 		//Crea una nueva instancia de Tweets a partir de DataObject
-		$objDBO = DB_DataObject::Factory("KitkatTuitGeneral");
-		$hashtDBO = DB_DataObject::Factory("KitkatTuitCuenta");
+		$objDBO = DB_DataObject::Factory("TweetGeneral");
+		$hashtDBO = DB_DataObject::Factory("TweetHashtag");
 		
 		$objDBO->selectAdd();
-		$objDBO->selectAdd("COUNT(adv_beat_tweet_hashtag.id) as conteo, idUsuario, adv_beat_tweet_hashtag.id,nombre,tag,user_profile_image_url");
+		$objDBO->selectAdd("COUNT(tweet_hashtag.id) as conteo,tweet_hashtag.id,nombre,tag");
 		
 		$objDBO->groupBy("id");
-		$objDBO->groupBy("idUsuario");
-		$objDBO->orderBy("conteo DESC");
+		
 		$objDBO->joinAdd($hashtDBO,"RIGHT");
 		
 		$ret = false;
@@ -189,8 +255,6 @@ class ManejaTweets{
 		while($objDBO->fetch()){
 			$ret = true;
 			//Asigna los valores
-			$resultados[$contador]->idUsuario = $objDBO->idUsuario;
-			$resultados[$contador]->user_profile_image_url = $objDBO->user_profile_image_url;
 			$resultados[$contador]->conteo = $objDBO->conteo;
 			$resultados[$contador]->idHashtag = $objDBO->id;
 			$resultados[$contador]->nombre = $objDBO->nombre;
@@ -215,7 +279,7 @@ class ManejaTweets{
 	function getTweetsVip($ultimoArroba = ''){
 		//Crea una nueva instancia de Tweets a partir de DataObject
 		//DB_DataObject::debugLevel(5);
-		$objDBO = DB_DataObject::Factory("KitkatTuitGeneral");
+		$objDBO = DB_DataObject::Factory("TweetGeneral");
 		$vipDBO = DB_DataObject::Factory("TweetVip");
 		
 		$campos = $objDBO->table();
@@ -255,7 +319,7 @@ class ManejaTweets{
 	
 	//Actualiza estado del Tweet
 	function setTweetPublicado($idTweet){
-		$obj2DBO = DB_DataObject::Factory("KitkatTuitGeneral");
+		$obj2DBO = DB_DataObject::Factory("TweetGeneral");
 		
 		$obj2DBO->get($idTweet);
 		$obj2DBO->publicado = 'S';
@@ -266,8 +330,8 @@ class ManejaTweets{
 		return(true);
 	}
 	
-	//Trae el nï¿½mero total de Tweets
-	function getNumTotalTweets($tabla = "KitkatTuitGeneral"){
+	//Trae el número total de Tweets
+	function getNumTotalTweets($tabla = "TweetGeneral"){
 		$obj2DBO = DB_DataObject::Factory($tabla);
 		
 		$obj2DBO->publicado = 'S';
@@ -280,7 +344,7 @@ class ManejaTweets{
 	}
 	
 	//Trae top Twitteros
-	function getTopUsuarios($tabla = "KitkatTuitGeneral"){
+	function getTopUsuarios($tabla = "TweetGeneral"){
 		//DB_DataObject::debugLevel(5);
 		$obj2DBO = DB_DataObject::Factory($tabla);
 		
@@ -317,54 +381,131 @@ class ManejaTweets{
 		
 		return($ret);
 	}
-  function ranking($tabla="KitkatTuitGeneral",$where='',$quincena=null,$contado=NULL){
-   //DB_DataObject::debugLevel(1);
-    $objDBO = DB_DataObject::Factory($tabla);
-    $campos = $objDBO->table();
-		$ret = false;
-    $contador=0;
-    $objDBO->selectAdd();
-    $objDBO->selectAdd("COUNT(user_screen_name) AS conteo,user_screen_name AS arroba,user_id,user_profile_image_url_https AS imagen,quincena,MAX(fecha)as fecha");
-    if($quincena!="" && $quincena!=null){
-      $objDBO->quincena=$quincena;
-    }
-    if($contado!="" && $contado!=null){
-      $objDBO->contado = $contado;
-    }
-    $objDBO->idCuenta=$where;
-    $objDBO->orderBy("conteo DESC");
-    $objDBO->groupBy("user_id");
-    $objDBO->find();
-    while ($objDBO->fetch()) {
-      $idUser = $objDBO->user_id;
-			$ret[$contador]->conteo   = utf8_encode(stripslashes($objDBO->conteo));
-			$ret[$contador]->arroba   = utf8_encode(stripslashes($objDBO->arroba));
-			$ret[$contador]->imagen   = utf8_encode(stripslashes($objDBO->imagen));
-			$ret[$contador]->fecha    = utf8_encode(stripslashes($objDBO->fecha));
-			$ret[$contador]->quincena = utf8_encode(stripslashes($objDBO->quincena));
-			$contador++;
+
+	//Función que retorna el id del últmo valor de arreglo de tweets
+	//Devuelve un Double
+	function ultimoId($arregloTweets){
+		foreach ($arregloTweets[count($arregloTweets)-1] as $key => $value) {
+			if($key=="id_str"){
+				$ultimoid=$value;	
+				break;	
 		}
-		
-		//Libera el objeto DBO
-		$objDBO->free();
-
-		return ($ret);
-  }
-  	function actualizaContado($tabla,$arroba,$fecha){
-		//DB_DataObject::debugLevel(1);
-		//Crea una nueva instancia de $tabla a partir de DataObject
-		$objDBO = DB_DataObject::Factory($tabla);
-    $objDBO->contado = "S";
-    $objDBO->whereAdd("user_screen_name=\"{$arroba}\"");
-    $objDBO->whereAdd("fecha <=\"{$fecha}\"");  
-    $ret = $objDBO->update(DB_DATAOBJECT_WHEREADD_ONLY);
-
-    
-		//printVar($insert);
-		//Libera el objeto DBO
-		$objDBO->free();
-		
-		return ($ret);
 	}
+		return $ultimoid;
+
+	}
+	//Función que reccorre los status de acuerdo a un termino o hashtag
+    function searchUltimoStatus($decodificacion){
+    	return $decodificacion['statuses'][count($decodificacion['statuses'])-1]['id_str'];
+	}
+	//Función que realiza petición a servidor por OAUTH
+	function peticionsrv($twitter,$getfield,$ruta,$requestMethod){
+			$results = $twitter->setGetfield($getfield)
+				 ->buildOauth($ruta, $requestMethod)
+				 ->performRequest();
+				 printVar($decodificacion);
+
+	return $decodificacion=(array) (object) json_decode($results,true);
+
+	}
+
+	//Defines Twitter´s API URL
+
+	function ruta($dateBgin,$termino,$hashtag,$usuario){
+
+		
+
+		if ($dateBgin ==''){
+			$getfield='?screen_name='.$usuario.'&count=200';
+			$url=array('https://api.twitter.com/1.1/statuses/user_timeline.json',$getfield,'https://api.twitter.com/1.1/application/rate_limit_status.json'); //max 3200 tweets
+		} else {
+			$getfield=$this->campoBuscar($dateBgin,$termino,$hashtag);
+
+			$url =array('https://api.twitter.com/1.1/search/tweets.json',$getfield,'https://api.twitter.com/1.1/application/rate_limit_status.json'); //max 500 tweets
+		}
+		printVar($url);
+		return $url;
+	}
+
+	//define el nivel de busqueda de https://api.twitter.com/1.1/search/tweets.json
+	function campoBuscar($dateBgin,$termino,$hashtag){
+
+		if($dateBgin !=""){
+			/*$getfield='?q=#'.$hashtag.'from:oldspiceLa'*//*.'&until='.$dateBgin*/;
+			$getfield = '?q=%40'.$hashtag;
+            /*$getfield = '?q=+%23'.$hashtag.'+OR+%23'.$hashtag*/
+			/*?q=%23freebandnames&since_id=24012619984051000&max_id=250126199840518145&result_type=mixed&count=4*/
+
+		}elseif ($termino !="") {
+			$getfield = '?q='.$termino;
+		}elseif ($hashtag !="") {
+			$getfield = '?q=+%23'.$hashtag;
+		}else{
+			$getfield = '?q=+%23'.$hashtag.'+OR+%23'.$hashtag;
+		}
+
+		return $getfield;
+    }
+    //Método que recorre registros del url de search/tweets
+    function searchFtch($url,$dateBgin,$termino,$hashtag,$decodificacion,$twitter,$requestMethod){
+    	$arreglo=array();
+    	$contador=1;
+    	$ultimoidFinal='';
+    	while($contador>0){
+    		$ultimoid=$this->searchUltimoStatus($decodificacion);
+    		if($ultimoid!=''){
+    			$getfield='?q='.$hashtag.'&max_id='.$ultimoid;
+    			printVar($getfield);
+    			printVar($url,'juli');
+				$decodificacion=$this->peticionsrv($twitter,$getfield,$url,$requestMethod); 
+				printVar($decodificacion); 
+				$contador++;
+/*    				 foreach($decodificacion as $key => $value){	
+						foreach($value as $llave => $valor){
+								if($llave=="id_str"){
+									return $valor;
+								}
+						}
+						'?q="'.$hashtag.'"&max_id=since_id=639481329072082944&count=100'
+			          }*/	
+    	    }
+    	    if($contador==8){sleep(900);}
+    	    if($ultimoid==$ultimoidFinal){
+    	    	return true;}
+    	    $ultimoidFinal=$ultimoid;
+        }
+
+    }
+    //Función que realiza Fetch de datos en timeLine
+    function userTimeFtch($url,$usuario,$decodificacion,$twitter,$requestMethod){
+    	$arreglo=array();
+    	$contador=1;
+    	$ultimoidFinal='';
+    while($contador>0){
+	 	$ultimoid=$decodificacion['search_metadata']['next_results'];	
+		 	if($ultimoid!=''){
+			 	printVar($ultimoid);
+				$getfield='?screen_name='.$usuario.$ultimoid.'&count=200';
+				$decodificacion=$this->peticionsrv($twitter,$getfield,$url,$requestMethod);
+				unset($decodificacion[0]);
+				array_push($arreglo,$decodificacion);
+				printVar($arreglo);
+				$contador++;
+				printVar($contador,'contador');
+				sleep(64);
+			}
+
+			if ($ultimoidFinal==$ultimoid) {
+				$contador=-1;
+			}
+
+
+	 	$ultimoidFinal=$ultimoid;
+
+	 }
+	 return $arreglo;
+    }
+
+
 }
 ?>
