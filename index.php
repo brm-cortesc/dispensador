@@ -1,11 +1,8 @@
 <?php
- ini_set('display_errors', E_ALL);
+ 
+/* error_reporting(E_ALL);*/
 require("db/requires.php"); 
-if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
+ini_set('display_errors', '1');
 	$smarty->display("index.html"); 
-}else{
-	//$smarty->display("kodos.html"); 
 
-	header("Location: index.php");
-}
 ?>

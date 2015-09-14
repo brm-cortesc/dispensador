@@ -1,2 +1,4 @@
 db/DBO.php
+db/requires.php
+db/requires.ini.php
 templates_c

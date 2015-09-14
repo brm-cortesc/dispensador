@@ -1,25 +1,22 @@
 <?php
-@ini_set("display_errors","0");
+ini_set("display_errors","1");
 error_reporting(0);
-session_start();
-$_SESSION['email']="HOLA";
+//session_start();
+/*$_SESSION['email']="HOLA";*/
 
 global $prefijo;
 
-//require($prefijo."db/DBO.php");
+require("./".$prefijo."db/DBO.php");
 
-//DataObjects
+//	DataObjects
+require("./".$prefijo."db/requires.ini.php");
 
-//require($prefijo."db/requires.ini.php");
+//	Clases
+global $prefijo;
+$prefijo="";
 
-//Clases
-//require($prefijo."class/class.General.inc.php");
-//require($prefijo."class/datosGrafica.php");
-
-//Smarty
-//echo $_SERVER["DOCUMENT_ROOT"];
-//require($_SERVER["DOCUMENT_ROOT"]."/Smarty/libs/Smarty.class.php");
-require("../Smarty/libs/Smarty.class.php");
+// incluir Smarty
+require($_SERVER["DOCUMENT_ROOT"]."/Smarty/libs/Smarty.class.php");
 $smarty = new Smarty();
 
 $smarty->compile_check = true;
