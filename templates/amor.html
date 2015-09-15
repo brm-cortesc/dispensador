@@ -17,7 +17,6 @@
   <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <script src="js/libs/modernizr-2.6.2.min.js"></script>
-  <script src="js/libs/jquery.js"></script>
 </head>
 <body>
   <!--Header-->
@@ -35,6 +34,7 @@
     <div class="row">
       <article class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
         <h1 class="escogiste escogiste-amor">Amor</h1>
+        <div id="contador"></div
         <form id="postear" method="POST" name="postear">
           <textarea id="mensaje" placeholder="Escribe un mensaje" name="mensaje" class="form-control"></textarea>
           <div class="postear">
@@ -43,6 +43,7 @@
               <button href="" data-share="tw" type="button" class="fa fa-twitter"></button>
             </p>
           </div>
+           <div class="bg-danger"> <p class="text-center"> Debes escribir menos de 120 caracteres </p> </div>
         </form>
         <p class="text-center">Estos son los mensajes de AMOR que nos han compartido.</p>
       </article>
