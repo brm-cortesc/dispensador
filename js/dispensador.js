@@ -111,15 +111,15 @@ jQuery('.fa-facebook').click(function(){
 
 	FB.login(function(){
   	// Note: The call will only work if you accept the permission request
-  	FB.api('/me/feed', 'post', {message: mensaje});
-	}, {scope: 'publish_actions'});
+  	FB.api('/me/feed', 'post', {message: "#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA"});
+	}, {scope: 'public_profile,publish_actions'});
 
-	
-	/*FB.ui({
+
+	FB.ui({
   	method: 'feed',
  	 link: 'http://fbapp.brm.com.co/fbappNestle/dispensadorAmistad/',
- 	 message: mensaje,
-	}, function(response){});*/
+ 	 message: "#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA",
+	}, function(response){});
 
 });
 	
