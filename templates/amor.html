@@ -39,6 +39,7 @@
           <textarea id="mensaje" placeholder="Escribe un mensaje" name="mensaje" class="form-control"></textarea>
           <div class="postear">
             <p>Compartir en: 
+              <button href="" data-share="fb" type="button" class="fa fa-facebook"></button>
               <button href="" data-share="tw" type="button" class="fa fa-twitter"></button>
             </p>
           </div>
@@ -47,7 +48,7 @@
       </article>
     </div>
     <div class="row">{#foreach from=$tweets item=tweet#}
-      <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
+      <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amor">
         <div class="single">
           <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
           <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
@@ -56,7 +57,7 @@
             {#$tweet->tweet#}
             
           </p>
-          <div class="barra-nombre"><img src="{#$tweet-&gt;avatar#}" width="50" class="perfil img-circle img-responsive">
+          <div class="barra-nombre"><img src="{#$tweet->avatar#}" width="50" class="perfil img-circle img-responsive">
             <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>

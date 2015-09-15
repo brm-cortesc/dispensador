@@ -70,11 +70,30 @@ jQuery(document).ready(function(){
 		var mensaje=jQuery('#mensaje').val();
 
 		window.open('https://twitter.com/intent/tweet?text=%23'+hash+'%20con%20%40nestlecolombia%20'+mensaje, "width=200, height=50", "toolbar=0");
-		console.log(hash);
+		//console.log(hash);
 	});
 
 		/*Funcion para compartir en facebook*/
-	var oli;
+
+
+		window.fbAsyncInit = function() {
+ 		  FB.init({
+ 		    appId      : '443666442492858',
+ 		    xfbml      : true,
+ 		    version    : 'v2.4'
+ 		  });
+ 		};
+
+ 		(function(d, s, id){
+ 		   var js, fjs = d.getElementsByTagName(s)[0];
+ 		   if (d.getElementById(id)) {return;}
+ 		   js = d.createElement(s); js.id = id;
+ 		   js.src = "//connect.facebook.net/en_US/sdk.js";
+ 		   fjs.parentNode.insertBefore(js, fjs);
+ 		 }(document, 'script', 'facebook-jssdk'));
+
+
+	/*var oli;
 	function Share(url) {
 	  FB.ui({
 	  method: 'share_open_graph',
@@ -83,7 +102,26 @@ jQuery(document).ready(function(){
 	      object: oli,
 	  })
 	}, function(response){});
-	}
+	}*/
+jQuery('.fa-facebook').click(function(){
+		//console.log('hola me dieron click');
+	var fb=jQuery(this).attr('data-share');
+	var hashf=jQuery(this).attr('data-hash');
+	var mensaje=jQuery('#mensaje').val();
+
+	FB.login(function(){
+  	// Note: The call will only work if you accept the permission request
+  	FB.api('/me/feed', 'post', {message: mensaje});
+	}, {scope: 'publish_actions'});
+
+	
+	/*FB.ui({
+  	method: 'feed',
+ 	 link: 'http://fbapp.brm.com.co/fbappNestle/dispensadorAmistad/',
+ 	 message: mensaje,
+	}, function(response){});*/
+
+});
 	
 		//<a href="https://twitter.com/intent/tweet?text=%23AlargamosLaNavidad%20con%20%40MovistarCo%20Hola%2C%20necesito%20conocer%20el%20n%C3%BAmero%20de%20mi%20celular%20y%2Fo%20mi%20l%C3%ADnea%20fija" class="btnTwitter" data-lang="es" onclick="event.preventDefault(); ga('send', 'event', 'movistar', 'campaña-de-navidad', 'preguntar-twitter-personas');">Pregunta en Twitter</a>
 	
