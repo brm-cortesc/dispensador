@@ -63,6 +63,7 @@ header .logo img {
 }
 #buzon {
   height: 100%;
+  margin-bottom: -0.35em;
   width: 100%;
 }
 #contador {
