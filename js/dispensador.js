@@ -66,10 +66,73 @@ jQuery(document).ready(function(){
 	jQuery('.fa-twitter').click(function(){
 		//console.log('hola me dieron click');
 		var tw=jQuery(this).attr('data-share');
+		var hash=jQuery(this).attr('data-hash');
 		var mensaje=jQuery('#mensaje').val();
-		console.log(mensaje);
+
+		window.open('https://twitter.com/intent/tweet?text=%23'+hash+'%20con%20%40nestlecolombia%20'+mensaje, "width=200, height=50", "toolbar=0");
+		console.log(hash);
 	});
 
 	//<a href="https://twitter.com/intent/tweet?text=%23AlargamosLaNavidad%20con%20%40MovistarCo%20Hola%2C%20necesito%20conocer%20el%20n%C3%BAmero%20de%20mi%20celular%20y%2Fo%20mi%20l%C3%ADnea%20fija" class="btnTwitter" data-lang="es" onclick="event.preventDefault(); ga('send', 'event', 'movistar', 'campaña-de-navidad', 'preguntar-twitter-personas');">Pregunta en Twitter</a>
 	
+});
+
+
+var validTitu=false;
+var validHist=false;
+var validFile=true;
+var maxTitu=104;
+var maxHist=201;
+
+$(document).ready(function(){
+
+	$('#mensaje').keyup('keypress',function(){
+	    console.log("Ingreso");
+	    var valor=$(this).val();
+	    var log = parseInt(valor.toString().length+1);
+	    $("#contador").html(maxTitu-log);
+
+	    var contador = maxTitu-log;
+
+	    if( contador <= 0 ){
+
+	    	$(".bg-danger").slideDown();
+	    	jQuery('.fa-twitter').attr("disabled", "disabled").addClass(" disabled");
+
+
+	    }else{
+
+	    	$("-bg-danger").slideUp;
+	    	jQuery('.fa-twitter').removeAttr("disabled");
+	    }
+
+	}).focusout(function () {
+	    // body...
+	    var valor=$(this).val();
+	    var log = parseInt(valor.toString().length+1);
+	    if(log<=maxTitu && log>0){
+	        validTitu=true;
+	    }else{
+
+	        validTitu=false;
+	    }
+	});
+	/*$('#historia').keyup('keypress',function(){
+	    var valor=$(this).val();
+	    var log = parseInt(valor.toString().length+1);
+	    $("#carcHist").html(maxHist-log);
+	}).focusout(function () {
+	    // body...
+	    var valor=$(this).val();
+	    var log = parseInt(valor.toString().length+1);
+	    if(log<=maxHist && log>0){
+	        console.log("historia valida");
+	        validHist=true;
+	    }else{
+	        validHist=false;
+	    }
+	})*/
+
+
+
 });
