@@ -18,11 +18,6 @@
   <![endif]-->
   <script src="js/libs/modernizr-2.6.2.min.js"></script>
   <script src="js/libs/jquery.js"></script>
-  <style type="text/css">
-  .bg-danger{
-    display: none;
-  }
-  </style>
 </head>
 <body>
   <!--Header-->
@@ -40,21 +35,19 @@
     <div class="row">
       <article class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
         <h1 class="escogiste escogiste-amor">Amor</h1>
-          <div id="contador"></div>
         <form id="postear" method="POST" name="postear">
           <textarea id="mensaje" placeholder="Escribe un mensaje" name="mensaje" class="form-control"></textarea>
           <div class="postear">
             <p>Compartir en: 
-              <button  data-share="tw" data-hash='PruebasBrm' type="button" class="fa fa-twitter"></button>
+              <button href="" data-share="tw" type="button" class="fa fa-twitter"></button>
             </p>
           </div>
-          <div class="bg-danger"> <p> Debes escribir menos de 120 caracteres </p> </div>
         </form>
         <p class="text-center">Estos son los mensajes de AMOR que nos han compartido.</p>
       </article>
     </div>
     <div class="row">{#foreach from=$tweets item=tweet#}
-      <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amor">
+      <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
         <div class="single">
           <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
           <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
@@ -63,7 +56,7 @@
             {#$tweet->tweet#}
             
           </p>
-          <div class="barra-nombre"><img src="{#$tweet->avatar#}" width="50" class="perfil img-circle img-responsive">
+          <div class="barra-nombre"><img src="{#$tweet-&gt;avatar#}" width="50" class="perfil img-circle img-responsive">
             <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>
