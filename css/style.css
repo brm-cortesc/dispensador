@@ -107,7 +107,7 @@ header .logo img {
   width: 21em;
 }
 .escoger-amistad {
-  background-position: right center;
+  background-position: right top;
 }
 .escoger:hover {
   -o-transform: scale(1.2);
