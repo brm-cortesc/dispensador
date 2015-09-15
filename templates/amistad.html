@@ -28,18 +28,17 @@
       <!--Buzon-->
       <article class="col-lg-8 col-md-8 col-sm-8 col-xs-12"><img src="images/buzon-base.png" width="700" class="img-responsive"></article>
     </div>
-    <div class="logo"><a href="index.php"><img src="images/logo-dispensador.png" alt="Dispensador de amor y amistad" title="Dispensador de amor y amistad" width="300" class="img-responsive center-block"></a></div>
+    <div class="logo"><a href="index.php#done"><img src="images/logo-dispensador.png" alt="Dispensador de amor y amistad" title="Dispensador de amor y amistad" width="300" class="img-responsive center-block"></a></div>
   </header>
   <!--/-Header-->
   <section class="container-fluid">
     <div class="row">
       <article class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
         <h1 class="escogiste escogiste-amistad">Amistad</h1>
-        <form id="postear" method="">
-          <textarea placeholder="Escribe un mensaje" class="form-control"></textarea>
+        <form id="postear" method="POST" name="postear">
+          <textarea id="mensaje" placeholder="Escribe un mensaje" name="mensaje" class="form-control"></textarea>
           <div class="postear">
             <p>Compartir en: 
-              <button href="" data-share="fb" type="button" class="fa fa-facebook"></button>
               <button href="" data-share="tw" type="button" class="fa fa-twitter"></button>
             </p>
           </div>
@@ -47,10 +46,7 @@
         <p class="text-center">Estos son los mensajes de AMISTAD que nos han compartido.</p>
       </article>
     </div>
-    <div class="row">
-      {#foreach from=$tweets item=tweet#}
-      
-      
+    <div class="row">{#foreach from=$tweets item=tweet#}
       <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
         <div class="single">
           <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
@@ -64,8 +60,7 @@
             <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>
-      </article>
-      {#/foreach#}
+      </article>{#/foreach#}
     </div>
   </section>
   <!--Footer-->

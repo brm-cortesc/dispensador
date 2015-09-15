@@ -7,7 +7,7 @@ a {
 body {
   background-image: url("../images/bg-triangulos.jpg");
   background-position: top center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   color: #757575;
   font-family: 'Droid Sans', sans-serif;
   font-size: 1.3em;
@@ -242,6 +242,7 @@ footer a {
 }
 .box .tweet {
   padding: 1em;
+  max-height: 4.7em;
 }
 .postear {
   background-color: #4d4d4d;
@@ -290,6 +291,37 @@ footer a {
 }
 .postear .fa-twitter:hover {
   background-color: #1195c1;
+}
+.modal-content {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+.modal-header {
+  border: 0;
+  min-height: auto;
+  padding: 0;
+}
+.modal-header .close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  background-color: #be272d;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  float: none;
+  font-size: 1.3em;
+  height: 1.5em;
+  opacity: 0.99;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  filter: alpha(opacity=99);
+  width: 1.5em;
+  z-index: 10;
+}
+.modal img {
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.25);
 }
 .u-no-border {
   padding: 0;

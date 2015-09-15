@@ -13,22 +13,25 @@ block content
 		div.row
 			article.col-lg-10.col-md-10.col-sm-10.col-xs-12.col-lg-offset-1.col-md-offset-1.col-sm-offset-1
 
-				h1.escogiste.escogiste-amistad Amor
+				h1.escogiste.escogiste-amistad Amistad
 
-				form#postear(method="")
-					textarea(placeholder="Escribe un mensaje").form-control
+				form#postear(method="POST", name="postear")
+					textarea#mensaje.form-control(placeholder="Escribe un mensaje", name="mensaje")
 
 					div.postear
 						p Compartir en: 
-							button.fa.fa-facebook(href="", data-share="fb", type="button")
+							//- button.fa.fa-facebook(href="", data-share="fb", type="button")
 							button.fa.fa-twitter(href="", data-share="tw", type="button")
 
 
-				p.text-center Estos son los mensajes de AMOR que nos han compartido.
+				p.text-center Estos son los mensajes de AMISTAD que nos han compartido.
 
 
 
 		div.row
+			
+			{#foreach from=$tweets item=tweet#}
+			
 			article.col-lg-6.col-md-6.col-md-6.col-sm-6.col-xs-12.box.box-amistad
 				div.single
 					div.img-tweet
@@ -37,39 +40,17 @@ block content
 					div.img-producto
 						img.img-responsive(src="images/deditos.png", width="80")
 					
-					h3 #YoCompartoAmor
+					h3 #YoCompartoAmistad
 
 
 					p.tweet.
-						“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						incididunt ut labore et dolore ad minim veniam, consequat”
+						{#$tweet->tweet#}
 
 					div.barra-nombre
 
-						img.perfil.img-circle.img-responsive(src="images/pic-sample.jpg", width="50")
+						img.perfil.img-circle.img-responsive(src="{#$tweet->avatar#}", width="50")
 
-						p.nombre-perfil Hola que hace
-
-
-			article.col-lg-6.col-md-6.col-md-6.col-sm-6.col-xs-12.box.box-amistad
-				div.single
-					div.img-tweet
-						img.img-tweet.img-responsive(src="", alt="")
-
-					div.img-producto
-						img.img-responsive(src="images/deditos.png", width="80")
-					
-					h3 #YoCompartoAmor
+						p.nombre-perfil {#$tweet->nombreUsuario#} | @{#$tweet->arroba#}
 
 
-					p.tweet.
-						“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						incididunt ut labore et dolore ad minim veniam, consequat”
-
-					div.barra-nombre
-
-						img.perfil.img-circle.img-responsive(src="images/pic-sample.jpg", width="50")
-
-						p.nombre-perfil Hola que hace
-
-
+			{#/foreach#}

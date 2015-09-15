@@ -1,4 +1,27 @@
 
+var screenWidth = jQuery(window).width();
+var pos = window.location.hash;
+
+//Carga de modal promoción
+jQuery(document).on("ready", function () {
+
+
+	if (  screenWidth >= 800 && pos != "#done" ) {
+
+		jQuery('#myModal').modal('show');
+
+		jQuery("#myModal").on("hide.bs.modal", function (e) {
+			
+			window.location.hash = "#done";
+
+		});
+
+
+	};
+
+});
+
+
 /*Boton para ver mecanica*/
 jQuery(document).on("click", ".btn-aqui", function () {
 	
@@ -22,6 +45,7 @@ jQuery(document).on("click", ".btn-aqui", function () {
 	});
 
 });
+
 
 /*Carga funciones para twitter*/
 
