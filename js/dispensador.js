@@ -62,7 +62,7 @@ jQuery(document).on("click", ".btn-aqui", function () {
 
 jQuery(document).ready(function(){
 	
-
+	/*FUncion para twittear desde la app*/
 	jQuery('.fa-twitter').click(function(){
 		//console.log('hola me dieron click');
 		var tw=jQuery(this).attr('data-share');
@@ -109,19 +109,39 @@ jQuery('.fa-facebook').click(function(){
 	var hashf=jQuery(this).attr('data-hash');
 	var mensaje=jQuery('#mensaje').val();
 
+	/*Funcion que permite postear en el muro del usuario*/
 	FB.login(function(){
   	// Note: The call will only work if you accept the permission request
   	FB.api('/me/feed', 'post', {message: "#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA"});
 	}, {scope: 'public_profile,publish_actions'});
 
 
+});
+jQuery('.fa-send').click(function(){
+		//console.log('hola me dieron click');
+	var fb=jQuery(this).attr('data-share');
+	var hashf=jQuery(this).attr('data-hash');
+	var mensaje=jQuery('#mensaje').val();
+
+
+	var postea ="#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA";
+
+	/*FUncion que postea lo que escribe el usuario como un post embebido */
 	FB.ui({
   	method: 'feed',
  	 link: 'http://fbapp.brm.com.co/fbappNestle/dispensadorAmistad/',
- 	 message: "#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA",
+ 	 caption:postea,
 	}, function(response){});
 
+
+	
+
+
+	
+
 });
+
+
 	
 		//<a href="https://twitter.com/intent/tweet?text=%23AlargamosLaNavidad%20con%20%40MovistarCo%20Hola%2C%20necesito%20conocer%20el%20n%C3%BAmero%20de%20mi%20celular%20y%2Fo%20mi%20l%C3%ADnea%20fija" class="btnTwitter" data-lang="es" onclick="event.preventDefault(); ga('send', 'event', 'movistar', 'campaña-de-navidad', 'preguntar-twitter-personas');">Pregunta en Twitter</a>
 	
