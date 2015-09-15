@@ -1,19 +1,23 @@
 <?php
-ini_set("display_errors",1);
 
 /*function printVar( $variable, $title = "" ){
   $var = print_r( $variable, true );
   echo "<pre style='background-color:#dddd00; border: dashed thin #000000;'><strong>[$title]</strong> $var</pre>";
 }*/
 require("db/requires.php");
+
+
+ini_set("display_errors",1);
+
 //require("class/twitterSearch.php");
 require_once("class/manejaTweets.php");
 require_once("class/TwitterAPIExchange.php");
+require_once("class/guardaTweet.php");
 
 
 /*Hash temporales*/
 
-$comparte="HoyEstaPara";
+$comparte="PruebasBRM";
 $amistad="NoEsPorPresumir";
 
 //https://api.twitter.com/1.1/search/tweets.json?q=+%23MiDiaDelCafe
@@ -27,6 +31,11 @@ $settings = array(
 	);
 
 
+  $idHastag='3';
+
+  $lastId = guardaTweet::traeIdFin($idHastag);
+  printVar($lastId);
+
 /*$hashtag->tag*/
 	 $dateBgin='2015';
    $dateEnd='';
@@ -36,15 +45,59 @@ $settings = array(
    $requestMethod = 'GET';
    $ultimoidFinal=''; 
   //Asignación de url para búsqueda
-  $Campos =$objeto->ruta($dateBgin,$termino,$hashtag,$usuario);
+  $Campos =$objeto->ruta($dateBgin,$termino,$hashtag,$lastId,$usuario);
+  /*printVar($Campos);
+  die();*/
+  /*Traer el último idTweet para traer los tweets nuevos con idHastag*/
+
+
 
    $url=$Campos[0];
    $getfield=$Campos[1];
+
+   //printVar($getfield);
    //printVar($getfield);
    //$satusApi=$Campos[2];
    $twitter = new TwitterAPIExchange($settings);
-   $decodificacion=$objeto->peticionsrv($twitter,$getfield,$url,$requestMethod);
+   $decodificacion=$objeto->peticionsrv($twitter,$getfield,$lastId,$url,$requestMethod);
    printVar($decodificacion);
+
+  //
+     # code...
+   $value=$decodificacion['statuses'];
+    $total=count($value);
+    //echo $total;
+
+    
+    for ($i=0; $i < $total; $i++) { 
+      //printVar($value[$i]);
+      $idTweet=$value[$i]['id_str'];
+      $tweet=$value[$i]['text'];
+      $arroa=$value[$i]['user']['screen_name'];
+      $nombreUsuario=$value[$i]['user']['name'];
+      $avatar=$value[$i]['user']['profile_image_url'];
+
+
+      $campos["idHashtag"]='3';
+      $campos["idTweet"]=$idTweet;
+      $campos["arroba"]=$arroa;
+      $campos["nombreUsuario"]=$nombreUsuario;
+      $campos["tweet"]=$tweet;
+      $campos["avatar"]=$avatar;
+
+
+      $guardarTweet = guardaTweet::InsertarTweet($campos);
+
+      
+      
+      //die();
+    }
+    
+    die();
+  //
+   //printVar($decodificacion['statuses']);
+
+   //printVar($idTweet);
     
    $contador=1;
    
@@ -54,10 +107,9 @@ $settings = array(
       $userTimeLine=$objeto->userTimeFtch($url,$usuario,$decodificacion,$twitter,$requestMethod);
     }else if(strrpos($url,"search/tweets")>0){
       //Fetch de tweets de acuerdo a hashtag o terminos.
-      printVar(1);
+      //printVar(1);
       $terms=$objeto->searchFtch($url,$dateBgin,$termino,$hashtag,$decodificacion,$twitter,$requestMethod);
     }
-   die;
-
+   
                 
 ?>

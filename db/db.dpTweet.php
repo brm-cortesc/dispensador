@@ -13,6 +13,7 @@ class DataObject_DpTweet extends DB_DataObject
     public $idHashtag;                       // int(10)  
     public $idTweet;                         // string(255)  
     public $arroba;                          // string(20)  
+    public $nombreUsuario;                          // string(20)  
     public $tweet;                           // string(255)  
     public $avatar;                          // string(255)  
     public $fecha;                           // datetime(19)  binary
@@ -27,6 +28,7 @@ class DataObject_DpTweet extends DB_DataObject
              'idHashtag' =>  DB_DATAOBJECT_INT,
              'idTweet' =>  DB_DATAOBJECT_STR,
              'arroba' =>  DB_DATAOBJECT_STR,
+             'nombreUsuario' =>  DB_DATAOBJECT_STR,
              'tweet' =>  DB_DATAOBJECT_STR,
              'avatar' =>  DB_DATAOBJECT_STR,
              'fecha' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME,
@@ -48,6 +50,7 @@ class DataObject_DpTweet extends DB_DataObject
          return array(
              'idTweet' => '',
              'arroba' => '',
+             'nombreUsuario' => '',
              'tweet' => '',
              'avatar' => '',
          );

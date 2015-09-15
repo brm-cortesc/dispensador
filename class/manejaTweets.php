@@ -399,7 +399,8 @@ class ManejaTweets
     	return $decodificacion['statuses'][count($decodificacion['statuses'])-1]['id_str'];
 	}
 	//Función que realiza petición a servidor por OAUTH
-	function peticionsrv($twitter,$getfield,$ruta,$requestMethod){
+	function peticionsrv($twitter,$getfield,$lastId,$ruta,$requestMethod){
+		//printVar($lastId);
 			$results = $twitter->setGetfield($getfield)
 				 ->buildOauth($ruta, $requestMethod)
 				 ->performRequest();
@@ -411,35 +412,39 @@ class ManejaTweets
 
 	//Defines Twitter´s API URL
 
-	function ruta($dateBgin,$termino,$hashtag,$usuario){
+	function ruta($dateBgin,$termino,$hashtag,$lastId,$usuario){
 
-		
+		//printVar($lastId);
 
 		if ($dateBgin ==''){
 			$getfield='?screen_name='.$usuario.'&count=200';
 			$url=array('https://api.twitter.com/1.1/statuses/user_timeline.json',$getfield,'https://api.twitter.com/1.1/application/rate_limit_status.json'); //max 3200 tweets
 		} else {
-			$getfield=$this->campoBuscar($dateBgin,$termino,$hashtag);
+			$getfield=$this->campoBuscar($dateBgin,$termino,$hashtag,$lastId);
+			
 
 			$url =array('https://api.twitter.com/1.1/search/tweets.json',$getfield,'https://api.twitter.com/1.1/application/rate_limit_status.json'); //max 500 tweets
 		}
-		printVar($url);
+		//printVar($url);
+		//die();
 		return $url;
 	}
 
 	//define el nivel de busqueda de https://api.twitter.com/1.1/search/tweets.json
-	function campoBuscar($dateBgin,$termino,$hashtag){
+	function campoBuscar($dateBgin,$termino,$hashtag,$lastId){
 
 		if($dateBgin !=""){
 			/*$getfield='?q=#'.$hashtag.'from:oldspiceLa'*//*.'&until='.$dateBgin*/;
-			$getfield = '?q=%40'.$hashtag;
+			$getfield = '?q=%23'.$hashtag.'&since_id='.$lastId;;
             /*$getfield = '?q=+%23'.$hashtag.'+OR+%23'.$hashtag*/
 			/*?q=%23freebandnames&since_id=24012619984051000&max_id=250126199840518145&result_type=mixed&count=4*/
 
 		}elseif ($termino !="") {
+			
 			$getfield = '?q='.$termino;
 		}elseif ($hashtag !="") {
-			$getfield = '?q=+%23'.$hashtag;
+
+			$getfield = '?q=+%23'.$hashtag.'&since_id='.$lastId;
 		}else{
 			$getfield = '?q=+%23'.$hashtag.'+OR+%23'.$hashtag;
 		}
@@ -454,11 +459,10 @@ class ManejaTweets
     	while($contador>0){
     		$ultimoid=$this->searchUltimoStatus($decodificacion);
     		if($ultimoid!=''){
-    			$getfield='?q='.$hashtag.'&max_id='.$ultimoid;
-    			printVar($getfield);
-    			printVar($url,'juli');
+    			$getfield='?q=+%23'.$hashtag.'&since_id='.$lastId;
+    			//printVar($getfield);
 				$decodificacion=$this->peticionsrv($twitter,$getfield,$url,$requestMethod); 
-				printVar($decodificacion); 
+				//printVar($decodificacion); 
 				$contador++;
 /*    				 foreach($decodificacion as $key => $value){	
 						foreach($value as $llave => $valor){
@@ -469,7 +473,7 @@ class ManejaTweets
 						'?q="'.$hashtag.'"&max_id=since_id=639481329072082944&count=100'
 			          }*/	
     	    }
-    	    if($contador==8){sleep(900);}
+    	    if($contador==6){sleep(360);}
     	    if($ultimoid==$ultimoidFinal){
     	    	return true;}
     	    $ultimoidFinal=$ultimoid;
@@ -484,14 +488,14 @@ class ManejaTweets
     while($contador>0){
 	 	$ultimoid=$decodificacion['search_metadata']['next_results'];	
 		 	if($ultimoid!=''){
-			 	printVar($ultimoid);
+			 	//printVar($ultimoid);
 				$getfield='?screen_name='.$usuario.$ultimoid.'&count=200';
 				$decodificacion=$this->peticionsrv($twitter,$getfield,$url,$requestMethod);
 				unset($decodificacion[0]);
 				array_push($arreglo,$decodificacion);
-				printVar($arreglo);
+				//printVar($arreglo);
 				$contador++;
-				printVar($contador,'contador');
+				//printVar($contador,'contador');
 				sleep(64);
 			}
 
