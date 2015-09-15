@@ -73,7 +73,19 @@ jQuery(document).ready(function(){
 		console.log(hash);
 	});
 
-	//<a href="https://twitter.com/intent/tweet?text=%23AlargamosLaNavidad%20con%20%40MovistarCo%20Hola%2C%20necesito%20conocer%20el%20n%C3%BAmero%20de%20mi%20celular%20y%2Fo%20mi%20l%C3%ADnea%20fija" class="btnTwitter" data-lang="es" onclick="event.preventDefault(); ga('send', 'event', 'movistar', 'campaña-de-navidad', 'preguntar-twitter-personas');">Pregunta en Twitter</a>
+		/*Funcion para compartir en facebook*/
+	var oli;
+	function Share(url) {
+	  FB.ui({
+	  method: 'share_open_graph',
+	  action_type: 'og:share',
+	  action_properties: JSON.stringify({
+	      object: oli,
+	  })
+	}, function(response){});
+	}
+	
+		//<a href="https://twitter.com/intent/tweet?text=%23AlargamosLaNavidad%20con%20%40MovistarCo%20Hola%2C%20necesito%20conocer%20el%20n%C3%BAmero%20de%20mi%20celular%20y%2Fo%20mi%20l%C3%ADnea%20fija" class="btnTwitter" data-lang="es" onclick="event.preventDefault(); ga('send', 'event', 'movistar', 'campaña-de-navidad', 'preguntar-twitter-personas');">Pregunta en Twitter</a>
 	
 });
 
