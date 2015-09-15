@@ -13,6 +13,7 @@ jQuery(document).on("ready", function () {
 		jQuery("#myModal").on("hide.bs.modal", function (e) {
 			
 			window.location.hash = "#done";
+			dataLayer.push({'event' : 'cerrar-modal'});
 
 		});
 
@@ -29,17 +30,20 @@ jQuery(document).on("click", ".btn-aqui", function () {
 	jQuery(".mecanica").slideToggle(function () {
 
 		jQuery(".btn-aqui").toggleClass('cerrar');
+		
+
 
 		if ( jQuery(".btn-aqui").hasClass('cerrar') ){
 
 		/*Cambiamos img cuando el acordeon está abierto*/
 			jQuery(".btn-aqui").attr('src', 'images/btn-cerrar.png');
-
+			dataLayer.push({'event' : 'mecanica-abrir'});
 
 		}
 		else
 		{
 			jQuery(".btn-aqui").attr('src', 'images/btn-aqui.png');
+			dataLayer.push({'event' : 'mecanica-cerrar'});
 
 		};
 	});
@@ -70,6 +74,7 @@ jQuery(document).ready(function(){
 		var mensaje=jQuery('#mensaje').val();
 
 		window.open('https://twitter.com/intent/tweet?text=%23'+hash+'%20con%20%40nestlecolombia%20'+mensaje, "width=200, height=50", "toolbar=0");
+		dataLayer.push({'event' : 'share-tw'});
 		//console.log(hash);
 	});
 
@@ -114,6 +119,7 @@ jQuery('.fa-facebook').click(function(){
   	// Note: The call will only work if you accept the permission request
   	FB.api('/me/feed', 'post', {message: "#"+hashf+" "+mensaje+" con NESTLÉ COLOMBIA"});
 	}, {scope: 'public_profile,publish_actions'});
+	dataLayer.push({'event' : 'share-fb'});
 
 
 });
@@ -132,12 +138,7 @@ jQuery('.fa-send').click(function(){
  	 link: 'http://fbapp.brm.com.co/fbappNestle/dispensadorAmistad/',
  	 caption:postea,
 	}, function(response){});
-
-
-	
-
-
-	
+	dataLayer.push({'event' : 'share-fb'});	
 
 });
 
@@ -167,13 +168,13 @@ $(document).ready(function(){
 	    if( contador <= 0 ){
 
 	    	$(".bg-danger").slideDown();
-	    	jQuery('.fa-twitter').attr("disabled", "disabled").addClass(" disabled");
+	    	jQuery('.fa').attr("disabled", "disabled").addClass(" disabled");
 
 
 	    }else{
 
-	    	$("-bg-danger").slideUp;
-	    	jQuery('.fa-twitter').removeAttr("disabled");
+	    	$(".bg-danger").slideUp();
+	    	jQuery('.fa').removeAttr("disabled");
 	    }
 
 	}).focusout(function () {
