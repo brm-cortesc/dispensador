@@ -1,0 +1,284 @@
+/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-14
+* https://github.com/cortesc/HTML
+* Copyright (c) 2015 Cristian Cortés; Licensed MIT */
+a {
+  color: #0071b9;
+}
+body {
+  background-image: url("../images/bg-triangulos.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  color: #757575;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.3em;
+}
+.row {
+  margin: 0 auto;
+  max-width: 85.3em;
+}
+header {
+  background-image: url("../images/bg.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  padding-top: 3em !important;
+  margin-bottom: 10em !important;
+}
+header .logo {
+  background-color: #0071b9;
+  max-height: 3em;
+}
+header .logo img {
+  position: relative;
+  top: -3em;
+}
+.escoger {
+  background-image: url("../images/escoger.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: 200%;
+  -moz-background-size: 200%;
+  background-size: 200%;
+  display: block;
+  height: 20em;
+  margin: 0 auto;
+  text-indent: -9999px;
+  -o-transition: all -0.1s ease-in-out 0.2s;
+  -ms-transition: all -0.1s ease-in-out 0.2s;
+  -webkit-transition: all -0.1s ease-in-out 0.2s;
+  -moz-transition: all -0.1s ease-in-out 0.2s;
+  transition: all -0.1s ease-in-out 0.2s;
+  width: 21em;
+}
+.escoger-amistad {
+  background-position: right center;
+}
+.escoger:hover {
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.escogiste {
+  background-image: url("../images/escogiste.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: 200%;
+  -moz-background-size: 200%;
+  background-size: 200%;
+  display: block;
+  height: 9em;
+  margin: 0 auto;
+  text-indent: -9999px;
+  -o-transition: all -0.1s ease-in-out 0.2s;
+  -ms-transition: all -0.1s ease-in-out 0.2s;
+  -webkit-transition: all -0.1s ease-in-out 0.2s;
+  -moz-transition: all -0.1s ease-in-out 0.2s;
+  transition: all -0.1s ease-in-out 0.2s;
+  width: 10em;
+}
+.escogiste-amistad {
+  background-position: right center;
+}
+.mecanica {
+  margin: 1em auto;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  height: 0em;
+  overflow: hidden;
+}
+.mecanica ol,
+.mecanica .paso {
+  counter-reset: li;
+  position: relative;
+}
+.mecanica ol li,
+.mecanica .paso li {
+  list-style: none;
+  font-size: 1.4em;
+  margin-bottom: 2em;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+.mecanica ol li:hover:before,
+.mecanica .paso li:hover:before {
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.mecanica ol li:before,
+.mecanica .paso li:before {
+  position: relative;
+  left: -0.2em;
+  ((null)): 0;
+  background-color: #0071b9;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  display: inline-block;
+  color: #fff;
+  content: counter(li);
+  counter-increment: li;
+  font-size: 1.5em;
+  height: 1.5em;
+  padding: 0.1em;
+  text-align: center;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+  width: 1.5em;
+}
+.mecanica ol li span,
+.mecanica .paso li span {
+  display: inline-block;
+}
+.mecanica ol .cuatro:before,
+.mecanica .paso .cuatro:before {
+  top: -0.6em;
+}
+.mecanica ol .cuatro span,
+.mecanica .paso .cuatro span {
+  max-width: 18em;
+}
+.mecanica ol .dos,
+.mecanica .paso .dos {
+  margin-left: 12em;
+}
+.mecanica ol .dos:before,
+.mecanica .paso .dos:before {
+  top: -0.8em;
+}
+.mecanica ol .dos span,
+.mecanica .paso .dos span {
+  max-width: 16em;
+}
+.mecanica ol .tres,
+.mecanica .paso .tres {
+  margin-left: 5em;
+}
+.mecanica ol .tres:before,
+.mecanica .paso .tres:before {
+  top: -1.4em;
+}
+.mecanica ol .tres span,
+.mecanica .paso .tres span {
+  max-width: 16em;
+}
+.mecanica ol .uno,
+.mecanica .paso .uno {
+  margin-left: 18em;
+}
+.mecanica .destacado {
+  color: #0071b9;
+  font-size: 1.8em;
+  margin-top: -0.6em;
+}
+footer {
+  background-color: #29a8df;
+  border-bottom: 2em solid #0071b9;
+  color: #0071b9;
+}
+footer a {
+  color: #fff;
+  display: block;
+  margin-top: 0.8em;
+}
+.box {
+  color: #fff;
+  margin: 1em auto 2em;
+}
+.box-amistad .single {
+  background-color: #0071b9;
+}
+.box-amor .single {
+  background-color: #be272d;
+}
+.box .img-tweet {
+  display: block;
+}
+.box h3,
+.box .img-producto {
+  display: inline-block;
+  padding: 1em;
+  vertical-align: middle;
+}
+.box h3 {
+  font-size: 1.3em;
+  width: 60%;
+}
+.box .barra-nombre {
+  background-color: #4d4d4d;
+  color: #fff;
+  padding: 0.5em;
+}
+.box .barra-nombre .perfil,
+.box .barra-nombre .nombre-perfil {
+  display: inline-block;
+  vertical-align: middle;
+}
+.box .barra-nombre .nombre-perfil {
+  margin-left: 1em;
+}
+.box .tweet {
+  padding: 1em;
+}
+.postear {
+  background-color: #4d4d4d;
+  color: #fff;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+.postear .fa {
+  background-color: transparent;
+  border: 1px solid #fff;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 1.3em;
+  height: 2em;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  -o-transition: all -0.1s ease-in-out 0.2s;
+  -ms-transition: all -0.1s ease-in-out 0.2s;
+  -webkit-transition: all -0.1s ease-in-out 0.2s;
+  -moz-transition: all -0.1s ease-in-out 0.2s;
+  transition: all -0.1s ease-in-out 0.2s;
+  width: 2em;
+}
+.postear .fa:active,
+.postear .fa:hover,
+.postear .fa:focus {
+  outline: 0 !important;
+  outline: none !important;
+}
+.postear .fa:active {
+  -o-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
+}
+.postear .fa-facebook {
+  background-color: #4d71a8;
+}
+.postear .fa-facebook:hover {
+  background-color: #3e5a86;
+}
+.postear .fa-twitter {
+  background-color: #1bb7eb;
+}
+.postear .fa-twitter:hover {
+  background-color: #1195c1;
+}
+.u-no-border {
+  padding: 0;
+  margin: 0;
+}

@@ -7,17 +7,17 @@ error_reporting(E_ALL ^ E_STRICT);
 
 global $prefijo;
 
-require("./".$prefijo."db/DBO.php");
+// require("./".$prefijo."db/DBO.php");
 
 //	DataObjects
-require("./".$prefijo."db/requires.ini.php");
+// require("./".$prefijo."db/requires.ini.php");
 
 //	Clases
 global $prefijo;
 $prefijo="";
 
 // incluir Smarty
-require($_SERVER["DOCUMENT_ROOT"]."/Smarty/libs/Smarty.class.php");
+require("../Smarty/libs/Smarty.class.php");
 $smarty = new Smarty();
 
 $smarty->compile_check = true;

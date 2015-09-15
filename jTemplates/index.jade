@@ -1,0 +1,64 @@
+extends partials/base.jade
+
+block title
+	title Dispensador de Amor &amp; Amistad
+
+block description
+	meta(name="description" content="Descripción del artículo" )
+
+block content
+
+	section.container-fluid
+		div.row
+			article.col-lg-4.col-md-4.col-sm-4.col-xs-12.col-lg-offset-4.col-md-offset-4.col-sm-offset-4
+				p.text-center Descubre como participar
+				img.btn-aqui.center-block.img-responsive(src="images/btn-aqui.png", alt="Aquí", title="aquí", width="150")
+
+		div.row.mecanica
+			article.col-lg-4.col-md-4.col-sm-4.col-xs-12
+				img.img-responsive(src="images/mecanica.png", alt="Mecánica", title="Mecánica")
+			article.col-lg-8.col-md-8.col-sm-8.col-xs-12
+					ol.pasos
+						li.uno:  span Síguenos en nuestras redes sociales.
+						li.dos: span Inspírate, crea y comparte tu propio mensaje de amor y amistad.  
+						li.tres.
+							<span >Si tu mensaje es de amor agrega <a href="https://twitter.com/search?q=%23ComparteAmor&src=typd" target="_blank">#ComparteAmor</a> y <a href="https://twitter.com/NestleColombia" target="_blank">@NestleColombia</a></span>
+
+						li.cuatro.
+							<span>Si tu mensaje es de amistad agrega
+							<a href="https://twitter.com/search?q=%23ComparteAmistad&src=typd" target="_blank">#ComparteAmistad</a> y <a href="https://twitter.com/NestleColombia" target="_blank">@NestleColombia</a></span>
+
+			article.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				p.text-center.
+					Si tu mensaje es el más emotivo y original serás uno de los cuatro ganadores.     
+				
+				p.destacado.text-center.
+					Recuerda son 4 súper anchetas.
+
+				img.img-responsive.center-block(src="images/participa.png", alt="Participa", title="Participa", width="350")
+
+
+
+		div.row
+
+			p.text-center.
+				Haz clic en cualquiera de estos botones y podras
+				ver y compartir mensajes de amor o amistad.
+
+			
+			//Escoge Amor
+			article.col-lg-5.col-md-5.col-sm-5.col-xs-12.col-lg-offset-1.col-md-offset-1.col-sm-offset-1
+
+				a.escoger.escoger-amor(href="amor.php") Escoge Amor
+
+			///-Escoge Amor
+
+			//Escoge Amistad
+
+			article.col-lg-5.col-md-5.col-sm-5.col-xs-12
+
+				a.escoger.escoger-amistad(href="amistad.php") Escoge Amistad
+
+			///-Escoge Amistad
+
+
