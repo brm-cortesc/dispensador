@@ -1,3 +1,12 @@
+.btn-aqui
+	cursor pointer
+	margin-bottom 1em
+	transition all -0.1s ease-in-out 0.2s
+	
+	&:active
+		transform scale(0.9)
+		
+
 .escoger
 	path("escoger.png")
 	background-repeat no-repeat
@@ -33,9 +42,7 @@
 
 .mecanica
 	margin 1em auto
-	opacity 0
-	height 0em
-	overflow hidden
+	display none
 	
 	ol, .paso
 		counter-reset li

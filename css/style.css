@@ -1,4 +1,4 @@
-/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-14
+/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-15
 * https://github.com/cortesc/HTML
 * Copyright (c) 2015 Cristian Cortés; Licensed MIT */
 a {
@@ -11,6 +11,7 @@ body {
   color: #757575;
   font-family: 'Droid Sans', sans-serif;
   font-size: 1.3em;
+  text-rendering: optimizeLegibility;
 }
 .row {
   margin: 0 auto;
@@ -33,6 +34,22 @@ header .logo {
 header .logo img {
   position: relative;
   top: -3em;
+}
+.btn-aqui {
+  cursor: pointer;
+  margin-bottom: 1em;
+  -o-transition: all -0.1s ease-in-out 0.2s;
+  -ms-transition: all -0.1s ease-in-out 0.2s;
+  -webkit-transition: all -0.1s ease-in-out 0.2s;
+  -moz-transition: all -0.1s ease-in-out 0.2s;
+  transition: all -0.1s ease-in-out 0.2s;
+}
+.btn-aqui:active {
+  -o-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  transform: scale(0.9);
 }
 .escoger {
   background-image: url("../images/escoger.png");
@@ -83,11 +100,7 @@ header .logo img {
 }
 .mecanica {
   margin: 1em auto;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  height: 0em;
-  overflow: hidden;
+  display: none;
 }
 .mecanica ol,
 .mecanica .paso {
@@ -281,4 +294,47 @@ footer a {
 .u-no-border {
   padding: 0;
   margin: 0;
+}
+@media (max-width: 768px) {
+  header {
+    -webkit-background-size: 300%;
+    -moz-background-size: 300%;
+    background-size: 300%;
+  }
+  header img {
+    margin: 0 auto;
+  }
+  .mecanica img {
+    margin: 0 auto;
+  }
+  .mecanica ol .cuatro,
+  .paso .cuatro,
+  .mecanica ol .dos,
+  .paso .dos,
+  .mecanica ol .tres,
+  .paso .tres,
+  .mecanica ol .uno,
+  .paso .uno {
+    margin-left: 0 !important;
+  }
+  .mecanica ol .cuatro span,
+  .paso .cuatro span,
+  .mecanica ol .dos span,
+  .paso .dos span,
+  .mecanica ol .tres span,
+  .paso .tres span,
+  .mecanica ol .uno span,
+  .paso .uno span {
+    max-width: auto !important;
+  }
+}
+@media (max-width: 480px) {
+  .escoger {
+    height: 10em;
+    width: 11em;
+  }
+  .escogiste {
+    height: 6em;
+    width: 7em;
+  }
 }
