@@ -15,8 +15,8 @@ block content
 
 				h1.escogiste.escogiste-amistad Amistad
 
-				form#postear(method="")
-					textarea(placeholder="Escribe un mensaje").form-control
+				form#postear(method="POST", name="postear")
+					textarea#mensaje.form-control(placeholder="Escribe un mensaje", name="mensaje")
 
 					div.postear
 						p Compartir en: 
