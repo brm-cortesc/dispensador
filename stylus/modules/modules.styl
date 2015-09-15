@@ -1,0 +1,82 @@
+.box
+	color #fff
+	margin 1em auto 2em
+	
+	&-amistad
+		.single
+			background-color Azul
+
+	&-amor
+		.single
+			background-color Rojo
+		
+	
+	.img-tweet
+		display block
+		
+	h3, .img-producto
+		display inline-block
+		padding 1em
+		vertical-align middle
+		
+
+	h3
+		font-size 1.3em
+		width 60%
+		
+		
+
+	.barra-nombre
+		background-color GrisOscuro
+		color #fff
+		padding 0.5em
+		
+		.perfil, .nombre-perfil
+			display inline-block
+			vertical-align middle
+			
+		.nombre-perfil
+			margin-left 1em
+			
+	.tweet
+		padding 1em
+
+.postear
+	background-color GrisOscuro
+	color #fff
+	padding 0.5em
+	margin-bottom 1em
+	
+	.fa
+		background-color transparent
+		border 1px solid #fff
+		border-radius 100%
+		display inline-block
+		font-size 1.3em
+		height 2em
+		margin-left 0.5em
+		vertical-align middle
+		transition all -0.1s ease-in-out 0.2s
+		width @height
+		
+		&:active, &:hover, &:focus
+			outline 0 !important
+			outline none !important
+		
+
+		&:active
+			transform scale(0.9)	
+
+		
+	.fa-facebook
+		background-color #4d71a8
+		
+		&:hover
+			background-color darken(@background-color, 20% )
+		
+	.fa-twitter
+		background-color #1bb7eb
+		
+		&:hover
+			background-color darken(@background-color, 20% )
+		
