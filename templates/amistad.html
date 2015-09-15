@@ -34,7 +34,7 @@
   <section class="container-fluid">
     <div class="row">
       <article class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
-        <h1 class="escogiste escogiste-amistad">Amor</h1>
+        <h1 class="escogiste escogiste-amistad">Amistad</h1>
         <form id="postear" method="">
           <textarea placeholder="Escribe un mensaje" class="form-control"></textarea>
           <div class="postear">
@@ -44,40 +44,28 @@
             </p>
           </div>
         </form>
-        <p class="text-center">Estos son los mensajes de AMOR que nos han compartido.</p>
+        <p class="text-center">Estos son los mensajes de AMISTAD que nos han compartido.</p>
       </article>
     </div>
     <div class="row">
+      {#foreach from=$tweets item=tweet#}
+      
+      
       <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
         <div class="single">
           <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
           <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
-          <h3>#YoCompartoAmor</h3>
+          <h3>#YoCompartoAmistad</h3>
           <p class="tweet">
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore ad minim veniam, consequat”
+            {#$tweet->tweet#}
             
           </p>
-          <div class="barra-nombre"><img src="images/pic-sample.jpg" width="50" class="perfil img-circle img-responsive">
-            <p class="nombre-perfil">Hola que hace</p>
+          <div class="barra-nombre"><img src="{#$tweet->avatar#}" width="50" class="perfil img-circle img-responsive">
+            <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>
       </article>
-      <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
-        <div class="single">
-          <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
-          <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
-          <h3>#YoCompartoAmor</h3>
-          <p class="tweet">
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore ad minim veniam, consequat”
-            
-          </p>
-          <div class="barra-nombre"><img src="images/pic-sample.jpg" width="50" class="perfil img-circle img-responsive">
-            <p class="nombre-perfil">Hola que hace</p>
-          </div>
-        </div>
-      </article>
+      {#/foreach#}
     </div>
   </section>
   <!--Footer-->

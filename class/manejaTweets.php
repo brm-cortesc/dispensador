@@ -404,7 +404,7 @@ class ManejaTweets
 			$results = $twitter->setGetfield($getfield)
 				 ->buildOauth($ruta, $requestMethod)
 				 ->performRequest();
-				 printVar($decodificacion);
+				 //printVar($decodificacion);
 
 	return $decodificacion=(array) (object) json_decode($results,true);
 

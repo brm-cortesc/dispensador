@@ -17,8 +17,6 @@ require_once("class/guardaTweet.php");
 
 /*Hash temporales*/
 
-$comparte="PruebasBRM";
-$amistad="NoEsPorPresumir";
 
 //https://api.twitter.com/1.1/search/tweets.json?q=+%23MiDiaDelCafe
 $objeto = new ManejaTweets();
@@ -29,18 +27,36 @@ $settings = array(
     'consumer_key' => "WDTlXe9etTsofPrDtZskFzKwf",
     'consumer_secret' =>"YTQp3f2KLC02pTMylDDkfGPVEYq1u886p8FDBdpZHUTTrMNuVT"
 	);
+$hastagT = guardaTweet::traeHastag();
 
 
-  $idHastag='3';
+
+
+
+
+
+foreach ($hastagT as $key => $hash) {
+  # code...
+
+
+$idHastag=$hash->id;
+$tag=$hash->hashtag;
+
+printVar($idHastag);
+printVar($tag);
+
+
+
+  
 
   $lastId = guardaTweet::traeIdFin($idHastag);
-  printVar($lastId);
+  //printVar($lastId);
 
 /*$hashtag->tag*/
 	 $dateBgin='2015';
    $dateEnd='';
    $termino='';
-   $hashtag=$comparte;
+   $hashtag=$tag;
    $usuario='';
    $requestMethod = 'GET';
    $ultimoidFinal=''; 
@@ -52,6 +68,7 @@ $settings = array(
 
 
 
+
    $url=$Campos[0];
    $getfield=$Campos[1];
 
@@ -60,15 +77,24 @@ $settings = array(
    //$satusApi=$Campos[2];
    $twitter = new TwitterAPIExchange($settings);
    $decodificacion=$objeto->peticionsrv($twitter,$getfield,$lastId,$url,$requestMethod);
-   printVar($decodificacion);
+   //printVar($decodificacion);
+
 
   //
      # code...
    $value=$decodificacion['statuses'];
+   printVar($value);
     $total=count($value);
     //echo $total;
+  if(empty($value)){
 
+    echo('No hay tweet');
+    sleep(1); 
+   
+
+  }else{
     
+     /*Recorre los datos de los tweets traidos por el ht*/
     for ($i=0; $i < $total; $i++) { 
       //printVar($value[$i]);
       $idTweet=$value[$i]['id_str'];
@@ -78,7 +104,7 @@ $settings = array(
       $avatar=$value[$i]['user']['profile_image_url'];
 
 
-      $campos["idHashtag"]='3';
+      $campos["idHashtag"]=$idHastag;
       $campos["idTweet"]=$idTweet;
       $campos["arroba"]=$arroa;
       $campos["nombreUsuario"]=$nombreUsuario;
@@ -87,29 +113,15 @@ $settings = array(
 
 
       $guardarTweet = guardaTweet::InsertarTweet($campos);
-
-      
-      
+      sleep(1);      
       //die();
     }
-    
-    die();
-  //
-   //printVar($decodificacion['statuses']);
+  }
 
-   //printVar($idTweet);
+
+  
     
-   $contador=1;
-   
-    //Index of de URL, para saber que parte del API va a ser utilizada
-    if(strrpos($url,"user_timeline")>0){
-      //Fetch de status en un timeline
-      $userTimeLine=$objeto->userTimeFtch($url,$usuario,$decodificacion,$twitter,$requestMethod);
-    }else if(strrpos($url,"search/tweets")>0){
-      //Fetch de tweets de acuerdo a hashtag o terminos.
-      //printVar(1);
-      $terms=$objeto->searchFtch($url,$dateBgin,$termino,$hashtag,$decodificacion,$twitter,$requestMethod);
-    }
+  }
    
                 
 ?>

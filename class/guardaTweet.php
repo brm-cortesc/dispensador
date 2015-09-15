@@ -27,7 +27,7 @@ class guardaTweet {
 
 	public function traeIdFin($idHashtag){
 
-		DB_DataObject::debugLevel(1);
+		//DB_DataObject::debugLevel(1);
 		//Crea una nueva instancia de $tabla a partir de DataObject
 		$objDBO = DB_DataObject::Factory('DpTweet');
 		$objDBO -> selectadd();
@@ -44,6 +44,59 @@ class guardaTweet {
 		return $ret;
 
 
+		}
+
+		public function traeTweets($idHashtag){
+
+	//DB_DataObject::debugLevel(5);
+		//Crea una nueva instancia de $tabla a partir de DataObject
+		$objDBO = DB_DataObject::Factory('DpTweet');
+		$objDBO -> selectadd();
+		$objDBO -> selectadd('id,idTweet,arroba,nombreUsuario,tweet,avatar,fecha');
+		$objDBO -> orderBy("fecha DESC");
+		$objDBO -> whereAdd("idHashtag=" . $idHashtag);
+		//$objDBO -> limit('1');
+		$objDBO -> find();
+		
+		$count = 0;
+		while ($objDBO -> fetch()) {
+			$ret[$count] -> id = $objDBO -> id;
+			$ret[$count] -> idTweet = $objDBO -> idTweet;
+			$ret[$count] -> arroba = $objDBO -> arroba;
+			$ret[$count] -> nombreUsuario = $objDBO -> nombreUsuario;
+			$ret[$count] -> tweet = $objDBO -> tweet;
+			$ret[$count] -> avatar = $objDBO -> avatar;
+			$ret[$count] -> fecha = $objDBO -> fecha;
+			$count++;
+		}
+		//$ret = $ret + 1;
+		//Libera el objeto DBO
+		return $ret;
+		$objDBO -> free();
+
+
+		}
+
+		public function traeHastag(){
+		//DB_DataObject::debugLevel(5);
+			//Crea una nueva instancia de $tabla a partir de DataObject
+		$objDBO = DB_DataObject::Factory('DpHashtag');
+		$objDBO -> selectadd();
+		$objDBO -> selectadd('id,hashtag');
+		//$objDBO -> orderBy("idTweet DESC");
+		//$objDBO -> limit('1');
+		$objDBO -> find();
+		
+		$count = 0;
+		while ($objDBO -> fetch()) {
+			$ret[$count] -> id = $objDBO -> id;
+			$ret[$count] -> hashtag = $objDBO -> hashtag;
+			$count++;
+		}
+		//$ret = $ret + 1;
+		//Libera el objeto DBO
+		$objDBO -> free();
+		return $ret;
 		}
 	
 
