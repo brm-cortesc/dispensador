@@ -31,6 +31,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <!--Header-->
   <header class="container-fluid u-no-border">
+
+    <div class="acordeon">
+       <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+      <img src="images/promo.jpg" alt="En septiembre podremos llenar el mundo de amor &amp; amistad" title="En septiembre podremos llenar el mundo de amor & amistad" class="img-responsive">
+    </div>
     <div class="row">
       <!--Copies y Dummies-->
       <article class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img src="images/copy-header.png" width="545" alt="Participa y podrás ganar esta deliciosa ancheta de chocolates" title="Participa y podrás ganar esta deliciosa ancheta de chocolates" class="img-responsive"><img src="images/dummies-header.png" alt="Beso de Negra, deditos y Morenitas de NESTLÉ" title="Beso de Negra, deditos y Morenitas de NESTLÉ" class="img-responsive"></article>
@@ -41,16 +46,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
   <!--/-Header-->
   <section class="container-fluid">
+    <button class="glyphicon glyphicon-chevron-down scrollDown"></button>
     <div class="row">
       <article class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
-        <p class="text-center">Descubre como participar</p><img src="images/btn-aqui.png" alt="Aquí" title="aquí" width="150" class="btn-aqui center-block img-responsive">
+        <p class="text-center">Descubre cómo participar</p><img src="images/btn-aqui.png" alt="Aquí" title="aquí" width="150" class="btn-aqui center-block img-responsive">
       </article>
     </div>
     <div class="row mecanica">
       <article class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><img src="images/mecanica.png" alt="Mecánica" title="Mecánica" width="350" class="img-responsive"></article>
       <article class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <ol class="pasos">
-          <li class="uno"><span>Síguenos en nuestras redes sociales.</span></li>
+          <li class="uno"><span>Síguenos en nuestras redes sociales. <a href="https://twitter.com/NestleColombia" target="_blank" type="button" data-hash="PruebasBrm" class="fa fa-facebook"></a> <a href="https://www.facebook.com/nestle.colombia" target="_blank" type="button" data-hash="PruebasBrm" class="fa fa-twitter"></a></span></li>
           <li class="dos"><span>Inspírate, crea y comparte tu propio mensaje de amor y amistad.  </span></li>
           <li class="tres">
             <span >Si tu mensaje es de amor agrega <a href="https://twitter.com/search?q=%23ComparteAmor&src=typd" target="_blank">#ComparteAmor</a> y <a href="https://twitter.com/NestleColombia" target="_blank">@NestleColombia</a></span>
@@ -69,12 +75,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           
         </p>
         <p class="destacado text-center">
-          Recuerda son 4 súper anchetas.
+          Recuerda, son 4 súper anchetas.
           
         </p><img src="images/participa.png" alt="Participa" title="Participa" width="350" class="img-responsive center-block">
       </article>
     </div>
-    <div class="row">
+    <div id="botones" class="row">
       <p class="text-center">
         Haz clic en cualquiera de estos botones y podras
         ver y compartir mensajes de amor o amistad.
@@ -82,16 +88,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
       </p>
       <!--Escoge Amor-->
-      <article class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1"><a href="amor.php" class="escoger escoger-amor">Escoge Amor</a></article>
+      <article class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1"><a href="amor.php#amor" class="escoger escoger-amor">Escoge Amor</a></article>
       <!--/-Escoge Amor-->
       <!--Escoge Amistad-->
-      <article class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><a href="amistad.php" class="escoger escoger-amistad">Escoge Amistad</a></article>
+      <article class="col-lg-5 col-md-5 col-sm-5 col-xs-12"><a href="amistad.php#amistad" class="escoger escoger-amistad">Escoge Amistad</a></article>
       <!--/-Escoge Amistad-->
       
     </div>
   </section>
   <!--Modal Promo-->
-  <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade bs-example-modal-lg">
+  <!-- <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade bs-example-modal-lg">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,7 +106,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="modal-body"><img src="images/promo.jpg" alt="En septiembre podremos llenar el mundo de amor &amp; amistad" title="En septiembre podremos llenar el mundo de amor &amp; amistad" class="img-responsive"></div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!--/-Modal Promo-->
   
   <!--Footer-->

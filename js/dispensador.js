@@ -6,21 +6,42 @@ var pos = window.location.hash;
 jQuery(document).on("ready", function () {
 
 
-	if (  screenWidth >= 800 && pos != "#done" ) {
+	if ( pos != "#done" ) {
 
-		jQuery('#myModal').modal('show');
+		// jQuery('#myModal').modal('show');
 
-		jQuery("#myModal").on("hide.bs.modal", function (e) {
+		// jQuery("#myModal").on("hide.bs.modal", function (e) {
 			
+		// 	window.location.hash = "#done";
+		// 	dataLayer.push({'event' : 'cerrar-modal'});
+
+		// });
+		
+		jQuery(".acordeon").slideDown();
+
+		jQuery(".acordeon .close").on("click", function () {
+			jQuery(".acordeon").slideUp();
 			window.location.hash = "#done";
 			dataLayer.push({'event' : 'cerrar-modal'});
-
 		});
 
 
 	};
 
 });
+
+/*Scroll down*/
+$(window).scroll(function(){
+
+	var opacity=1.3-($(window).scrollTop()/500);
+	if(opacity>1)opacity=1;
+	if(opacity<0)opacity=0;$('.scrollDown').fadeTo(10,opacity);});
+
+	$('.scrollDown').click(function(){$('html,body').animate({scrollTop:$(window).scrollTop()+600+'px'},300);}).hover(function(){$(this).fadeTo(200,1);
+
+
+});
+
 
 
 /*Boton para ver mecanica*/
