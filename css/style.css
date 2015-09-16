@@ -1,4 +1,4 @@
-/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-15
+/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-16
 * https://github.com/cortesc/HTML
 * Copyright (c) 2015 Cristian Cortés; Licensed MIT */
 a {
@@ -227,6 +227,14 @@ header .logo img {
 .mecanica ol .uno,
 .mecanica .paso .uno {
   margin-left: 18em;
+}
+.mecanica ol .uno:before,
+.mecanica .paso .uno:before {
+  top: -0.8em;
+}
+.mecanica ol .uno span,
+.mecanica .paso .uno span {
+  max-width: 16em;
 }
 .mecanica .destacado {
   color: #0071b9;

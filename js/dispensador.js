@@ -231,6 +231,8 @@ $(document).ready(function(){
 
 /*Animacion buzón */
 (function() {
+
+	/*Funcion anonima para hacer compatibilidad de canvas y animationsframes*/
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
     for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -256,6 +258,8 @@ $(document).ready(function(){
 }());
 
 (function () {
+
+	/*Variables, objeto img, y donde se pinta*/
 			
 	var buzon,
 		buzonImage,
@@ -263,13 +267,18 @@ $(document).ready(function(){
 
 	var alto = 0;			
 
+
+	/*Con esto hacemos correr la animacion*/
 	function chocoLoop () {
+
 	
 	  window.requestAnimationFrame(chocoLoop);
 
 	  buzon.update();
 	  buzon.render();
 	}
+
+	/*Funciones de alto, ancho & img source*/
 	
 	function sprite (options) {
 	
@@ -288,18 +297,27 @@ $(document).ready(function(){
 
             tickCount += 1;
 
+            /*Con esto hacemos mover 1 frame a la izquierda el sprite para generar el movimiento*/
+
             if (tickCount > ticksPerFrame) {
 
-				tickCount = 0;
-				
-                // If the current frame index is in range
-                if (frameIndex < numberOfFrames - 1) {	
-                    // Go to the next frame
-                    frameIndex += 1;
-                } else {
-                    frameIndex = 0;
-                }
-            }
+					tickCount = 0;
+					
+	                // If the current frame index is in range
+	                if (frameIndex < numberOfFrames - 1) {	
+	                    // Go to the next frame
+	                    frameIndex += 1;
+	                    alto = 0; 
+
+
+	                }else{
+	                	frameIndex = 0;
+
+	                    // alto = 1608;
+	                    // console.log("no cumplie")
+
+	                }
+	            }
         };
 		
 		that.render = function () {
@@ -308,17 +326,17 @@ $(document).ready(function(){
 		  that.context.clearRect(0, 0, that.width, that.height);
 		  
 		  // Draw the animation
-		  that.context.drawImage(
-		    that.image,
-		    frameIndex * that.width / numberOfFrames,
-		    0,
-		    that.width / numberOfFrames,
-		    that.height,
-		    0,
-		    0,
-		    that.width / numberOfFrames,
-		    that.height);
-		};
+		   that.context.drawImage(
+		     that.image,// imagen que cargamos
+		     frameIndex * that.width / numberOfFrames, //Ancho
+		     alto,//alto
+		     that.width / numberOfFrames,//esto calcula el ancho de cada frame individual
+		     that.height, 
+		     0,
+		     0,
+		     that.width / numberOfFrames,
+		     that.height);
+		 };
 		
 		return that;
 	}
@@ -334,10 +352,10 @@ $(document).ready(function(){
 	// Create sprite
 	buzon = sprite({
 		context: canvas.getContext("2d"),
-		width: 14000,
+		width: 56000,
 		height: 402,
 		image: buzonImage,
-		numberOfFrames: 20,
+		numberOfFrames: 80,
 		ticksPerFrame: 3
 	});
 	
