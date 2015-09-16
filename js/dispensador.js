@@ -129,7 +129,7 @@ jQuery(document).ready(function(){
 	  })
 	}, function(response){});
 	}*/
-jQuery('.fa-facebook').click(function(){
+jQuery('.fa-send').click(function(){
 		//console.log('hola me dieron click');
 	var fb=jQuery(this).attr('data-share');
 	var hashf=jQuery(this).attr('data-hash');
@@ -144,7 +144,7 @@ jQuery('.fa-facebook').click(function(){
 
 
 });
-jQuery('.fa-send').click(function(){
+jQuery('.fa-facebook').click(function(){
 		//console.log('hola me dieron click');
 	var fb=jQuery(this).attr('data-share');
 	var hashf=jQuery(this).attr('data-hash');
