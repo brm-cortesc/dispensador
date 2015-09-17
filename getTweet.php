@@ -105,7 +105,7 @@ printVar($tag);
       $avatar=$value[$i]['user']['profile_image_url'];
       $source=$value[$i]['source'];
       /*Hasta acá cargaba avatard de  tw*/
-       $truncate=$value[$i]['truncated'];
+      $truncate=$value[$i]['truncated'];
       $idUsuario=$value[$i]['user']['id'];
       $idUsuarioStr=$value[$i]['user']['id_str'];
       $location=$value[$i]['user']['location'];
@@ -148,6 +148,7 @@ printVar($tag);
       $campos['location']=$location;
       $campos['description']=$description;
       $campos['source']=$source;
+      $campos['truncated']=$truncate;
       $campos['url']=$url;
       $campos['protected']=$protected;
       $campos['followers_count']=$followers_count;
