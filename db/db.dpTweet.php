@@ -11,7 +11,7 @@ class DataObject_DpTweet extends DB_DataObject
     public $__table = 'dp_tweet';                        // table name
     public $id;                              // int(10)  not_null primary_key auto_increment
     public $idHashtag;                       // int(10)  
-    public $idTweet;                         // int(50)  
+    public $idTweet;                         // string(255)  
     public $idTweetStr;                      // string(255)  
     public $arroba;                          // string(20)  
     public $nombreUsuario;                   // string(255)  
@@ -25,12 +25,12 @@ class DataObject_DpTweet extends DB_DataObject
     public $inReplyToUserId;                 // int(50)  
     public $inReplyToUserIdStr;              // string(255)  
     public $inReplyToScreenName;             // string(255)  
-    public $idUsuario;                       // int(50)  
+    public $idUsuario;                       // string(255)  
     public $idUsuarioStr;                    // string(255)  
     public $location;                        // string(300)  
     public $description;                     // string(300)  
     public $url;                             // string(300)  
-    public $protected;                       // string(300)  
+    public $protegido;                       // string(300)  
     public $followersCount;                  // string(20)  
     public $friendsCount;                    // string(20)  
     public $listedCount;                     // string(20)  
@@ -51,6 +51,7 @@ class DataObject_DpTweet extends DB_DataObject
     public $following;                       // string(255)  
     public $followRequestSent;               // string(255)  
     public $notifications;                   // string(255)  
+    public $aprobado;                   // string(1)  enum
 
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObject_DpTweet',$k,$v); }
@@ -60,7 +61,7 @@ class DataObject_DpTweet extends DB_DataObject
          return array(
              'id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'idHashtag' =>  DB_DATAOBJECT_INT,
-             'idTweet' =>  DB_DATAOBJECT_INT,
+             'idTweet' =>  DB_DATAOBJECT_STR,
              'idTweetStr' =>  DB_DATAOBJECT_STR,
              'arroba' =>  DB_DATAOBJECT_STR,
              'nombreUsuario' =>  DB_DATAOBJECT_STR,
@@ -74,16 +75,16 @@ class DataObject_DpTweet extends DB_DataObject
              'inReplyToUserId' =>  DB_DATAOBJECT_INT,
              'inReplyToUserIdStr' =>  DB_DATAOBJECT_STR,
              'inReplyToScreenName' =>  DB_DATAOBJECT_STR,
-             'idUsuario' =>  DB_DATAOBJECT_INT,
+             'idUsuario' =>  DB_DATAOBJECT_STR,
              'idUsuarioStr' =>  DB_DATAOBJECT_STR,
              'location' =>  DB_DATAOBJECT_STR,
              'description' =>  DB_DATAOBJECT_STR,
              'url' =>  DB_DATAOBJECT_STR,
-             'protected' =>  DB_DATAOBJECT_STR,
+             'protegido' =>  DB_DATAOBJECT_STR,
              'followersCount' =>  DB_DATAOBJECT_STR,
              'friendsCount' =>  DB_DATAOBJECT_STR,
              'listedCount' =>  DB_DATAOBJECT_STR,
-             'createdAt' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME,
+             'createdAt' =>  DB_DATAOBJECT_STR,
              'favouritesCount' =>  DB_DATAOBJECT_STR,
              'utcOffset' =>  DB_DATAOBJECT_STR,
              'timeZone' =>  DB_DATAOBJECT_STR,
@@ -100,6 +101,7 @@ class DataObject_DpTweet extends DB_DataObject
              'following' =>  DB_DATAOBJECT_STR,
              'followRequestSent' =>  DB_DATAOBJECT_STR,
              'notifications' =>  DB_DATAOBJECT_STR,
+             'aprobado' =>  DB_DATAOBJECT_STR,
          );
     }
 
@@ -130,7 +132,7 @@ class DataObject_DpTweet extends DB_DataObject
              'location' => '',
              'description' => '',
              'url' => '',
-             'protected' => '',
+             'protegido' => '',
              'followersCount' => '',
              'friendsCount' => '',
              'listedCount' => '',
@@ -150,6 +152,7 @@ class DataObject_DpTweet extends DB_DataObject
              'following' => '',
              'followRequestSent' => '',
              'notifications' => '',
+             'notifications' => 'S',
          );
     }
 

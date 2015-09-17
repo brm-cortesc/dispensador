@@ -83,7 +83,7 @@ printVar($tag);
   //
      # code...
    $value=$decodificacion['statuses'];
-   printVar($value);
+   //printVar($value);
     $total=count($value);
     //echo $total;
   if(empty($value)){
@@ -96,9 +96,9 @@ printVar($tag);
     
      /*Recorre los datos de los tweets traidos por el ht*/
     for ($i=0; $i < $total; $i++) { 
-      //printVar($value[$i]);
+      printVar($value[$i]);
       $idTweet=$value[$i]['id_str'];
-      $idTweetInt=$value[$i]['id'];
+      $idTweetInt=(int)$value[$i]['id'];
       $tweet=$value[$i]['text'];
       $arroa=$value[$i]['user']['screen_name'];
       $nombreUsuario=$value[$i]['user']['name'];
@@ -130,7 +130,12 @@ printVar($tag);
       $default_profile=$value[$i]['user']['default_profile'];
       $following=$value[$i]['user']['following'];
       $follow_request_sent=$value[$i]['user']['follow_request_sent'];
-      $notifications=$value[$i]['user']['notifications'];
+      $in_reply_to_status_id=$value[$i]['in_reply_to_status_id'];
+      $in_reply_to_status_id_str=$value[$i]['in_reply_to_status_id_str'];
+      $in_reply_to_user_id=$value[$i]['in_reply_to_user_id'];
+      $in_reply_to_user_id_str=$value[$i]['in_reply_to_user_id_str'];
+      $in_reply_to_screen_name=$value[$i]['in_reply_to_screen_name'];
+      $default_profile_image=$value[$i]['user']['default_profile_image'];
 
       /*Traer la imagen del avatar grande*/
       $avatar=str_replace('_normal','',$avatar);
@@ -170,6 +175,12 @@ printVar($tag);
       $campos['following']=$following;
       $campos['follow_request_sent']=$follow_request_sent;
       $campos['notifications']=$notifications;
+      $campos['in_reply_to_status_id']=$in_reply_to_status_id_str;
+      $campos['in_reply_to_status_id_str']=$in_reply_to_user_id;
+      $campos['in_reply_to_user_id']=$in_reply_to_user_id_str;
+      $campos['in_reply_to_user_id_str']=$in_reply_to_screen_name;
+      $campos['in_reply_to_screen_name']=$in_reply_to_screen_name;
+      $campos['default_profile_image']=$default_profile_image;
 
       $guardarTweet = guardaTweet::InsertarTweet($campos);
       sleep(1);      
