@@ -22,11 +22,11 @@ require_once("class/guardaTweet.php");
 $objeto = new ManejaTweets();
 /*$twitter = new TwitterAPIExchange($settings);*/
 $settings = array(
-		'oauth_access_token' => "750495828-baTY248IdSib8LMsnjTGel2WTgFcMGiemMGRWNxw",
+    'oauth_access_token' => "750495828-baTY248IdSib8LMsnjTGel2WTgFcMGiemMGRWNxw",
     'oauth_access_token_secret' => "eUbahLx3FaJbqlbGUZYxKFGU26T9wUnm7ZmH5n81cirdI",
     'consumer_key' => "WDTlXe9etTsofPrDtZskFzKwf",
     'consumer_secret' =>"YTQp3f2KLC02pTMylDDkfGPVEYq1u886p8FDBdpZHUTTrMNuVT"
-	);
+  );
 $hastagT = guardaTweet::traeHastag();
 
 
@@ -53,7 +53,7 @@ printVar($tag);
   //printVar($lastId);
 
 /*$hashtag->tag*/
-	 $dateBgin='2015';
+   $dateBgin='2015';
    $dateEnd='';
    $termino='';
    $hashtag=$tag;
@@ -98,75 +98,19 @@ printVar($tag);
     for ($i=0; $i < $total; $i++) { 
       //printVar($value[$i]);
       $idTweet=$value[$i]['id_str'];
-      $idTweetInt=$value[$i]['id'];
       $tweet=$value[$i]['text'];
       $arroa=$value[$i]['user']['screen_name'];
       $nombreUsuario=$value[$i]['user']['name'];
       $avatar=$value[$i]['user']['profile_image_url'];
-      $source=$value[$i]['source'];
-      /*Hasta acá cargaba avatard de  tw*/
-       $truncate=$value[$i]['truncated'];
-      $idUsuario=$value[$i]['user']['id'];
-      $idUsuarioStr=$value[$i]['user']['id_str'];
-      $location=$value[$i]['user']['location'];
-      $description=$value[$i]['user']['description'];
-      $url=$value[$i]['user']['url'];
-      $protected=$value[$i]['user']['protected'];
-      $followers_count=$value[$i]['user']['followers_count'];
-      $friends_count=$value[$i]['user']['friends_count'];
-      $listed_count=$value[$i]['user']['listed_count'];
-      $created_at=$value[$i]['user']['created_at'];
-      $favourites_count=$value[$i]['user']['favourites_count'];
-      $utc_offset=$value[$i]['user']['utc_offset'];
-      $time_zone=$value[$i]['user']['time_zone'];
-      $geo_enabled=$value[$i]['user']['geo_enabled'];
-      $verified=$value[$i]['user']['verified'];
-      $statuses_count=$value[$i]['user']['statuses_count'];
-      $lang=$value[$i]['user']['lang'];
-      $contributors_enabled=$value[$i]['user']['contributors_enabled'];
-      $is_translator=$value[$i]['user']['is_translator'];
-      $is_translation_enabled=$value[$i]['user']['is_translation_enabled'];
-      $has_extended_profile=$value[$i]['user']['has_extended_profile'];
-      $default_profile=$value[$i]['user']['default_profile'];
-      $following=$value[$i]['user']['following'];
-      $follow_request_sent=$value[$i]['user']['follow_request_sent'];
-      $notifications=$value[$i]['user']['notifications'];
 
 
       $campos["idHashtag"]=$idHastag;
       $campos["idTweet"]=$idTweet;
-      $campos["idTweetInt"]=$idTweetInt;
       $campos["arroba"]=$arroa;
       $campos["nombreUsuario"]=$nombreUsuario;
       $campos["tweet"]=$tweet;
       $campos["avatar"]=$avatar;
-      /*Nuevos campos*/
-      $campos['idUsuario']=$idUsuario;
-      $campos['idUsuarioStr']=$idUsuarioStr;
-      $campos['location']=$location;
-      $campos['description']=$description;
-      $campos['source']=$source;
-      $campos['url']=$url;
-      $campos['protected']=$protected;
-      $campos['followers_count']=$followers_count;
-      $campos['friends_count']=$friends_count;
-      $campos['listed_count']=$listed_count;
-      $campos['created_at']=$created_at;
-      $campos['favourites_count']=$favourites_count;
-      $campos['utc_offset']=$utc_offset;
-      $campos['time_zone']=$time_zone;
-      $campos['geo_enabled']=$geo_enabled;
-      $campos['verified']=$verified;
-      $campos['statuses_count']=$statuses_count;
-      $campos['lang']=$lang;
-      $campos['contributors_enabled']=$contributors_enabled;
-      $campos['is_translator']=$is_translator;
-      $campos['is_translation_enabled']= $is_translation_enabled;
-      $campos['has_extended_profile']=$has_extended_profile;
-      $campos['default_profile']=$default_profile;
-      $campos['following']=$following;
-      $campos['follow_request_sent']=$follow_request_sent;
-      $campos['notifications']=$notifications;
+
 
       $guardarTweet = guardaTweet::InsertarTweet($campos);
       sleep(1);      
