@@ -20,9 +20,9 @@ class DataObject_DpTweet extends DB_DataObject
     public $fecha;                           // datetime(19)  binary
     public $source;                          // string(300)  
     public $truncated;                       // string(300)  
-    public $inRreplyToStatusId;              // int(50)  
+    public $inRreplyToStatusId;              // string(255)  
     public $inReplyToStatusIdStr;            // string(255)  
-    public $inReplyToUserId;                 // int(50)  
+    public $inReplyToUserId;                 // string(255)  
     public $inReplyToUserIdStr;              // string(255)  
     public $inReplyToScreenName;             // string(255)  
     public $idUsuario;                       // string(255)  
