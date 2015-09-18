@@ -453,6 +453,7 @@ footer a {
   -webkit-transition: all -0.1s ease-in-out 0.2s;
   -moz-transition: all -0.1s ease-in-out 0.2s;
   transition: all -0.1s ease-in-out 0.2s;
+  position: relative;
 }
 .box .img-tweet .mostrar-img {
   position: absolute;
