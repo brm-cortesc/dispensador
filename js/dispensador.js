@@ -187,12 +187,12 @@ var maxHist=201;
 $(document).ready(function(){
 
 	//Mostrar fototweet*/
-	jQuery(".mostrar-img").on('click',function() {
+	// jQuery(".mostrar-img").on('click',function() {
 
-		$(this).parent().addClass('img-completa');
-		$(this).addClass('desplegado');
-		$(this).html("cerrar");
-	});
+	// 	$(this).parent().addClass('img-completa');
+	// 	$(this).addClass('desplegado');
+	// 	$(this).html("cerrar");
+	// });
 
 	$('#mensaje').keyup('keypress',function(){
 	    console.log("Ingreso");
@@ -245,6 +245,18 @@ $(document).ready(function(){
 });
 
 /*Cerrar img tweet*/
+
+jQuery(document).on('click', '.mostrar-img', function() {
+
+		// $(this).parent().removeClass('img-completa');
+		// $(this).html("Ver imagen");
+		// $(this).removeClass('desplegado');
+		$(this).parent().addClass('img-completa');
+		$(this).addClass('desplegado');
+		$(this).html("cerrar");
+
+});
+
 
 jQuery(document).on('click', '.desplegado', function() {
 
