@@ -136,9 +136,12 @@ printVar($tag);
       $in_reply_to_user_id_str=$value[$i]['in_reply_to_user_id_str'];
       $in_reply_to_screen_name=$value[$i]['in_reply_to_screen_name'];
       $default_profile_image=$value[$i]['user']['default_profile_image'];
+      $media_url=$value[$i]['entities']['media'][0]['media_url'];
 
       /*Traer la imagen del avatar grande*/
       $avatar=str_replace('_normal','',$avatar);
+
+      printVar($media_url);
 
       $campos["idHashtag"]=$idHastag;
       $campos["idTweet"]=$idTweet;

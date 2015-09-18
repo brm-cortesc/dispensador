@@ -51,6 +51,7 @@ class DataObject_DpTweet extends DB_DataObject
     public $following;                       // string(255)  
     public $followRequestSent;               // string(255)  
     public $notifications;                   // string(255)  
+    public $media_url;                   // string(255)  
     public $aprobado;                   // string(1)  enum
 
     /* Static get */
@@ -101,6 +102,7 @@ class DataObject_DpTweet extends DB_DataObject
              'following' =>  DB_DATAOBJECT_STR,
              'followRequestSent' =>  DB_DATAOBJECT_STR,
              'notifications' =>  DB_DATAOBJECT_STR,
+             'media_url' =>  DB_DATAOBJECT_STR,
              'aprobado' =>  DB_DATAOBJECT_STR,
          );
     }
@@ -152,7 +154,8 @@ class DataObject_DpTweet extends DB_DataObject
              'following' => '',
              'followRequestSent' => '',
              'notifications' => '',
-             'notifications' => 'S',
+             'media_url' => '',
+             'aprobado' => 'S',
          );
     }
 

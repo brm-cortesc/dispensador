@@ -6,8 +6,18 @@ require_once("class/guardaTweet.php");
 
 $idHastag='4';
 
-echo 'Hola maria jesuadla';
 
-  $tweets = guardaTweet::traeTweets($idHastag);
+
+  $tweets = guardaTweet::ramdomTweet($idHastag);
+
+  
+  
+
+  foreach ($tweets as $key => $value) {
+  	# code...
+  	printVar($value);
+  	$idTweet=$value->id;
+  	printVar($idTweet);
+  }
   
 ?>
