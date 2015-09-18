@@ -358,7 +358,7 @@ header .logo img {
 }
 .user .content-perfil {
   max-height: 16em;
-  max-width: max-height;
+  max-width: 16em;
   overflow: hidden;
 }
 .select {
