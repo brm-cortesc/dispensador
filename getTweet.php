@@ -130,8 +130,20 @@ printVar($tag);
       $default_profile=$value[$i]['user']['default_profile'];
       $following=$value[$i]['user']['following'];
       $follow_request_sent=$value[$i]['user']['follow_request_sent'];
+<<<<<<< HEAD
       $notifications=$value[$i]['user']['notifications'];
+=======
+      $in_reply_to_status_id=$value[$i]['in_reply_to_status_id'];
+      $in_reply_to_status_id_str=$value[$i]['in_reply_to_status_id_str'];
+      $in_reply_to_user_id=$value[$i]['in_reply_to_user_id'];
+      $in_reply_to_user_id_str=$value[$i]['in_reply_to_user_id_str'];
+      $in_reply_to_screen_name=$value[$i]['in_reply_to_screen_name'];
+      $default_profile_image=$value[$i]['user']['default_profile_image'];
+      $media_url=$value[$i]['entities']['media'][0]['media_url'];
+>>>>>>> ad57ee9102a45bf9ea36a24c024949893141ad88
 
+
+      printVar($media_url);
 
       $campos["idHashtag"]=$idHastag;
       $campos["idTweet"]=$idTweet;

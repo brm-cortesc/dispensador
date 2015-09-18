@@ -51,6 +51,11 @@ class DataObject_DpTweet extends DB_DataObject
     public $following;                       // string(255)  
     public $followRequestSent;               // string(255)  
     public $notifications;                   // string(255)  
+<<<<<<< HEAD
+=======
+    public $media_url;                   // string(255)  
+    public $aprobado;                   // string(1)  enum
+>>>>>>> ad57ee9102a45bf9ea36a24c024949893141ad88
 
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObject_DpTweet',$k,$v); }
@@ -100,6 +105,11 @@ class DataObject_DpTweet extends DB_DataObject
              'following' =>  DB_DATAOBJECT_STR,
              'followRequestSent' =>  DB_DATAOBJECT_STR,
              'notifications' =>  DB_DATAOBJECT_STR,
+<<<<<<< HEAD
+=======
+             'media_url' =>  DB_DATAOBJECT_STR,
+             'aprobado' =>  DB_DATAOBJECT_STR,
+>>>>>>> ad57ee9102a45bf9ea36a24c024949893141ad88
          );
     }
 
@@ -150,6 +160,11 @@ class DataObject_DpTweet extends DB_DataObject
              'following' => '',
              'followRequestSent' => '',
              'notifications' => '',
+<<<<<<< HEAD
+=======
+             'media_url' => '',
+             'aprobado' => 'S',
+>>>>>>> ad57ee9102a45bf9ea36a24c024949893141ad88
          );
     }
 
