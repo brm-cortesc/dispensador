@@ -228,6 +228,20 @@ $(document).ready(function(){
 
 });
 
+//Mostrar fototweet*/
+jQuery(".mostrar-img").on('click',function() {
+
+	$(this).parent().addClass('img-completa');
+	$(this).html("cerrar");
+});
+
+if ( jQuery(".mostrar-img") == "cerrar"  ) {
+
+	jQuery(".mostrar-img").removeClass('img-completa');
+	jQuery(".mostrar-img").html("Ver Imagen");
+
+};
+
 
 /*Animacion buzón */
 (function() {

@@ -62,14 +62,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="row">{#foreach from=$tweets item=tweet#}
       <article class="col-lg-6 col-md-6 col-md-6 col-sm-6 col-xs-12 box box-amistad">
         <div class="single">
-          <div class="img-tweet"><img src="" alt="" class="img-tweet img-responsive"></div>
+          {#if $tweet->media_url!=''#}
+          <div class="img-tweet"><button class="btn btn-info mostrar-img">Ver Imagen</button><img src="{#$tweet->media_url#}" alt="" class="img-tweet img-responsive"></div>
+          {#/if#}
           <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
           <h3>#CompartoAmistad</h3>
           <p class="tweet">
             {#$tweet->tweet#}
             
           </p>
-          <div class="barra-nombre"><img src="{#$tweet->avatar#}" width="50" class="perfil img-circle img-responsive">
+          <div class="barra-nombre img-circle"><img src="{#$tweet->avatar#}" width="50" class="perfil img-circle img-responsive">
             <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>

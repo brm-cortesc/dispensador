@@ -448,6 +448,20 @@ footer a {
 }
 .box .img-tweet {
   display: block;
+  -o-transition: all -0.1s ease-in-out 0.2s;
+  -ms-transition: all -0.1s ease-in-out 0.2s;
+  -webkit-transition: all -0.1s ease-in-out 0.2s;
+  -moz-transition: all -0.1s ease-in-out 0.2s;
+  transition: all -0.1s ease-in-out 0.2s;
+}
+.box .img-tweet .mostrar-img {
+  position: absolute;
+  left: 40%;
+  bottom: 1em;
+  bottom: 1em;
+  left: 40%;
+  max-width: 7em;
+  z-index: 2;
 }
 .box h3,
 .box .img-producto {
@@ -463,6 +477,9 @@ footer a {
   background-color: #4d4d4d;
   color: #fff;
   padding: 0.5em;
+  max-height: 4em;
+  max-width: 4em;
+  overflow: hidden;
 }
 .box .barra-nombre .perfil,
 .box .barra-nombre .nombre-perfil {
@@ -523,6 +540,9 @@ footer a {
 }
 .postear .fa-twitter:hover {
   background-color: #1195c1;
+}
+.img-completa {
+  height: 100%;
 }
 .modal-content {
   background-color: transparent;
