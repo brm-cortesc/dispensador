@@ -6,6 +6,8 @@ require_once("class/guardaTweet.php");
 
 $idHastag='4';
 
+echo 'Hola maria jesuadla';
+
   $tweets = guardaTweet::traeTweets($idHastag);
   
 ?>
