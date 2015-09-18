@@ -133,6 +133,27 @@ class guardaTweet {
 		$objDBO -> free();
 		return $ret;
 		}
+
+
+		/*FUncion para traer tweet aleatorio*/
+
+		public function ramdomTweet($idHashtag){
+
+		DB_DataObject::debugLevel(5);
+		//Crea una nueva instancia de $tabla a partir de DataObject
+		$objDBO = DB_DataObject::Factory('DpTweet');
+		$objDBO -> selectadd();
+		$objDBO -> selectadd('id,idTweet,arroba,nombreUsuario,tweet,avatar,fecha');
+		$objDBO -> orderBy("RAND()");
+		$objDBO -> whereAdd("idHashtag=" . $idHashtag. ' AND aprobado="S"');
+		$objDBO -> limit('1');
+		$objDBO -> find();
+		$objDBO -> fetch();
+		return $ret;
+		$objDBO -> free();
+
+
+		}
 	
 
 
