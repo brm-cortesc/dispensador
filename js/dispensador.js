@@ -194,15 +194,6 @@ $(document).ready(function(){
 		$(this).html("cerrar");
 	});
 
-	jQuery(".desplegado").on('click',function() {
-
-		$(this).parent().removeClass('img-completa');
-		$(this).removeClass('desplegado');
-		$(this).html("Ver imagen");
-	});
-
-
-
 	$('#mensaje').keyup('keypress',function(){
 	    console.log("Ingreso");
 	    var valor=$(this).val();
@@ -250,6 +241,16 @@ $(document).ready(function(){
 	    }
 	})*/
 
+
+});
+
+/*Cerrar img tweet*/
+
+jQuery(document).on('click', '.desplegado', function() {
+
+		$(this).parent().removeClass('img-completa');
+		$(this).html("Ver imagen");
+		$(this).removeClass('desplegado');
 
 });
 
