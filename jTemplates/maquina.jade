@@ -1,0 +1,99 @@
+doctype html
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+head
+	block title
+		title BlockTitle
+
+	block description
+		meta(name="description" content="Descripción del artículo" )
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge')
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+
+	if debug == true
+		link(rel='stylesheet', href='css/animate.css')
+		link(rel='stylesheet', href='css/bootstrap.min.css')
+		link(rel='stylesheet', href='css/font-awesome.min.css')
+		link(rel='stylesheet', href='css/style.css')
+
+	else
+		link(rel='stylesheet', href='css/dispensador.min.css')
+
+	// Web Fonts
+	link(href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700', rel='stylesheet', type='text/css')
+
+	<!--[if lt IE]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	script(src='js/libs/modernizr-2.6.2.min.js')
+	script(src='js/libs/jquery.js')
+
+body.tv
+	
+	//Mensaje cuando no se muestra ningun tweet
+	div.splash
+		div.select.select-amor
+			div.img-responsive.amor
+
+		div.select.select-amistad
+			div.img-responsive.amistad
+		section.container-fluid
+
+			div.row
+				article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+
+					img.center-block.img-responsive(src="images/tv/copy-enter.svg")
+
+	///-Mensaje cuando no se muestra ningun tweet
+
+	//Tweets Amor
+	div.amor.hidden
+		section.container-fluid.franja
+			h1.center-block.text-center #CompartoAmor
+
+			div.avatar
+			
+
+		section.container-fluid
+			div.row
+				article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+				
+					div.user
+						img.perfil.img-circle.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
+
+						h2 @BRM
+
+					p.tweet.
+						#CompartoAmor @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
+						Te quiero
+
+
+	///-Tweets Amor
+
+	//Tweets Amistad
+	div.amistad.hidden
+		section.container-fluid.franja
+			h1.center-block.text-center #CompartoAmistad
+
+			div.avatar
+			
+
+		section.container-fluid
+			div.row
+				article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+				
+					div.user
+						img.perfil.img-circle.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
+
+						h2 @BRM
+
+					p.tweet.
+						#CompartoAmistad @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
+						Te quiero
+	///-Tweets Amistad
+
+</html>

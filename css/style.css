@@ -1,4 +1,4 @@
-/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-16
+/*! Dispensador amor & Amistad - v0.1.0 - 2015-09-18
 * https://github.com/cortesc/HTML
 * Copyright (c) 2015 Cristian Cortés; Licensed MIT */
 a {
@@ -13,12 +13,32 @@ body {
   font-size: 1.3em;
   text-rendering: optimizeLegibility;
 }
+.tv {
+  background-image: url("../images/tv/corazones.png"), url("../images/tv/bg.jpg");
+  background-position: top center, top center;
+  -webkit-background-size: 100%, 100%;
+  -moz-background-size: 100%, 100%;
+  background-size: 100%, 100%;
+  background-repeat: repeat;
+  height: 100%;
+  color: #757575;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.3em;
+  text-rendering: optimizeLegibility;
+  width: 100%;
+}
+.tv .row {
+  max-width: 124em;
+}
 .container-fluid {
   position: relative;
 }
 .row {
   margin: 0 auto;
   max-width: 85.3em;
+}
+.container-fluid {
+  position: relative;
 }
 header {
   background-image: url("../images/bg.jpg");
@@ -260,6 +280,151 @@ header .logo img {
 .scrollDown:focus {
   outline: 0 !important;
   outline: none !important;
+}
+.tv .amistad .avatar {
+  background-position: top left;
+}
+.tv .amistad .franja {
+  background-color: #0071b9;
+}
+.tv .amistad .mensaje {
+  top: 0;
+  padding-bottom: 4em;
+  padding-top: 15em;
+}
+.tv .amistad .mensaje .tweet:before,
+.tv .amistad .mensaje .tweet:after {
+  color: #0071b9;
+}
+.tv .amistad .user h2 {
+  color: #0071b9;
+}
+.tv .amor .avatar {
+  background-position: top right;
+}
+.tv .amor .franja {
+  background-color: #be272d;
+}
+.tv .amor .mensaje {
+  top: -4em;
+  padding-bottom: 4em;
+  padding-top: 15em;
+}
+.tv .amor .mensaje .tweet:before,
+.tv .amor .mensaje .tweet:after {
+  color: #be272d;
+}
+.tv .amor .user h2 {
+  color: #be272d;
+}
+.tv .franja {
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.35);
+  color: #fff;
+  padding: 1em;
+  padding-bottom: 3em;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+.tv .franja h1 {
+  font-size: 6em;
+}
+.tv .franja .avatar {
+  position: absolute;
+  left: 46%;
+  ((null)): 0;
+  background-image: url("../images/tv/btns.png");
+  -webkit-background-size: 200%;
+  -moz-background-size: 200%;
+  background-size: 200%;
+  background-repeat: no-repeat;
+  height: 180px;
+  width: 180px;
+  z-index: 2;
+}
+.user {
+  margin: 2em auto;
+  width: 70%;
+}
+.user img,
+.user h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.user h2 {
+  font-size: 3em;
+  margin-left: 1em;
+}
+.select {
+  display: inline-block;
+  height: 39.7em;
+  width: 55%;
+}
+.select-amistad {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-image: url("../images/tv/azul.png");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: block;
+  z-index: 1;
+}
+.select-amor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: url("../images/tv/rojo.png");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: block;
+  z-index: 2;
+}
+.select .img-responsive {
+  background-image: url("../images/tv/btns.png");
+  background-repeat: no-repeat;
+  height: 277px;
+  position: relative;
+  width: 277px;
+}
+.select .amor {
+  background-position: top right;
+  left: 30%;
+  top: 19%;
+}
+.select .amistad {
+  background-position: top left;
+  left: 46%;
+  top: 19%;
+}
+.mensaje {
+  background-color: rgba(255,255,255,0.9);
+  -webkit-border-radius: 3em;
+  border-radius: 3em;
+  -webkit-box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.4);
+  padding: 3em;
+  padding-bottom: 15em;
+  position: relative;
+  top: 25em;
+  ((null)): 0;
+  text-align: center;
+}
+.mensaje .tweet {
+  color: #000;
+  font-size: 4em;
+  margin: 0 auto;
+  max-width: 27em;
+}
+.mensaje .tweet:before,
+.mensaje .tweet:after {
+  content: " '' ";
+  display: inline-block;
 }
 footer {
   background-color: #29a8df;
