@@ -176,13 +176,13 @@ var validFile=true;
 var maxTitu=104;
 var maxHist=201;
 
-$(document).on('click', '.desplegado', function() {
-	event.preventDefault();
-	$(this).parent().removeClass('img-completa');
-	$(this).parent().removeClass('desplegado');
-	$(this).html("Ver");
-	/* Act on the event */
-});
+// $(document).on('click', '.desplegado', function() {
+// 	event.preventDefault();
+// 	$(this).parent().removeClass('img-completa');
+// 	$(this).parent().removeClass('desplegado');
+// 	$(this).html("Ver imagen");
+// 	/* Act on the event */
+// });
 
 $(document).ready(function(){
 
@@ -192,6 +192,13 @@ $(document).ready(function(){
 		$(this).parent().addClass('img-completa');
 		$(this).addClass('desplegado');
 		$(this).html("cerrar");
+	});
+
+	jQuery(".desplegado").on('click',function() {
+
+		$(this).parent().removeClass('img-completa');
+		$(this).removeClass('desplegado');
+		$(this).html("Ver imagen");
 	});
 
 
