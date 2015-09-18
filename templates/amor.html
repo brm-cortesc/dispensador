@@ -64,7 +64,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="single">
 
           {#if $tweet->media_url!=''#}
-          <div class="img-tweet"><button class="btn btn-danger mostrar-img">Ver Imagen</button><img src="{#$tweet->media_url#}" alt="" class="img-tweet img-responsive"></div>
+          <div class="img-tweet"><button class="btn btn-danger mostrar-img">Ver Imagen</button><img src="{#$tweet->media_url#}" alt="" class="img-responsive"></div>
           {#/if#}
           <div class="img-producto"><img src="images/deditos.png" width="80" class="img-responsive"></div>
           <h3>#CompartoAmor</h3>
@@ -72,7 +72,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {#$tweet->tweet#}
             
           </p>
-          <div class="barra-nombre img-circle"><img src="{#$tweet->avatar#}" width="50" class="perfil img-responsive">
+          <div class="barra-nombre">
+            <div class="img-circle perfil "><img src="{#$tweet->avatar#}" width="50" class="img-responsive"></div>
             <p class="nombre-perfil">{#$tweet->nombreUsuario#} | @{#$tweet->arroba#}</p>
           </div>
         </div>

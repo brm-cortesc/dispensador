@@ -448,12 +448,14 @@ footer a {
 }
 .box .img-tweet {
   display: block;
+  height: 6em;
+  overflow: hidden;
+  position: relative;
   -o-transition: all -0.1s ease-in-out 0.2s;
   -ms-transition: all -0.1s ease-in-out 0.2s;
   -webkit-transition: all -0.1s ease-in-out 0.2s;
   -moz-transition: all -0.1s ease-in-out 0.2s;
   transition: all -0.1s ease-in-out 0.2s;
-  position: relative;
 }
 .box .img-tweet .mostrar-img {
   position: absolute;
@@ -478,8 +480,6 @@ footer a {
   background-color: #4d4d4d;
   color: #fff;
   padding: 0.5em;
-  max-height: 4em;
-  max-width: 4em;
   overflow: hidden;
 }
 .box .barra-nombre .perfil,
@@ -489,6 +489,12 @@ footer a {
 }
 .box .barra-nombre .nombre-perfil {
   margin-left: 1em;
+}
+.box .barra-nombre .perfil {
+  padding: 0.5em;
+  max-height: 4em;
+  max-width: 4em;
+  overflow: hidden;
 }
 .box .tweet {
   padding: 0.5em;

@@ -13,8 +13,10 @@
 	
 	.img-tweet
 		display block
-		transition all -0.1s ease-in-out 0.2s
+		height 6em
+		overflow hidden
 		position relative
+		transition all -0.1s ease-in-out 0.2s
 		
 		.mostrar-img
 			absolute left 40% bottom 1em
@@ -39,8 +41,6 @@
 		background-color GrisOscuro
 		color #fff
 		padding 0.5em
-		max-height 4em
-		max-width 4em
 		overflow hidden
 		
 		.perfil, .nombre-perfil
@@ -49,6 +49,13 @@
 			
 		.nombre-perfil
 			margin-left 1em
+			
+		.perfil
+			padding 0.5em
+			max-height 4em
+			max-width 4em
+			overflow hidden
+			
 			
 	.tweet
 		padding 0.5em
