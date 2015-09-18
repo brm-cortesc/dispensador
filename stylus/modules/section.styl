@@ -147,6 +147,144 @@
 	&:active, &:hover, &:focus
 		outline 0 !important
 		outline none !important
+
+
+
+/*Estilos para el TV*/
+
+.tv
+	.amistad
+		.avatar
+			background-position top left
+		.franja
+			background-color Azul
+			
+		.mensaje
+			top 0
+			padding-bottom 4em
+			padding-top 15em
+			
+			.tweet
+				&:before, &:after
+					color Azul
+			
+		.user
+			h2
+				color Azul
+			
+
+	.amor
+		.avatar
+			background-position top right
+		.franja
+			background-color Rojo
+		.mensaje
+			top -4em
+			padding-bottom 4em
+			padding-top 15em
+			
+			.tweet
+				&:before, &:after
+					color Rojo
+			
+		.user
+			h2
+				color Rojo
+			
+
+	.franja
+		box-shadow 0px 0px 15px 5px rgba(0, 0, 0, 0.35)
+		color #fff
+		padding 1em
+		padding-bottom 3em
+		position relative
+		width 100%		
+		z-index 2
+		
+		h1	
+			font-size 6em
+			
+		.avatar
+			absolute left 46%
+			path("tv/btns.png")
+			background-size 200%
+			background-repeat no-repeat
+			height 180px
+			width @height
+			z-index 2
+
+.user
+	margin 2em auto
+	width 70%		
+	
+
+	img, h2
+		display inline-block
+		vertical-align middle
+		
+	h2
+		font-size 3em
+		margin-left 1em
+
+.select
+	display inline-block
+	height 39.7em
+	width 55%
+	
+	&-amistad
+		absolute bottom 0 right 0
+		path("tv/azul.png")
+		background-size 100%
+		background-repeat no-repeat
+		display block
+		z-index 1
+		
+	&-amor
+		absolute bottom 0 left 0
+		path("tv/rojo.png")
+		background-size 100%
+		background-repeat no-repeat
+		display block
+		z-index 2
 		
 
+	.img
+		&-responsive
+			path("tv/btns.png")
+			background-repeat no-repeat
+			height 277px
+			position relative
+			width @height	
+			
+	.amor
+		background-position top right
+		left 30%	
+		top 19%
+		
+	
+
+	.amistad
+		background-position top left
+		left 46%
+		top 19%
+		
+.mensaje
+	background-color: rgba(255, 255, 255, 0.9)
+	border-radius 3em
+	box-shadow 0px 0px 19px 5px rgba(0,0,0,0.4)
+	padding 3em
+	padding-bottom 15em
+	relative top 25em
+	text-align center
+	
+
+	.tweet
+		color #000
+		font-size 4em
+		margin 0 auto
+		max-width 27em
+		
+		&:before, &:after
+			content " '' "
+			display inline-block
 
