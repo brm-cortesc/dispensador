@@ -35,7 +35,7 @@ head
 body.tv
 	
 	//Mensaje cuando no se muestra ningun tweet
-	div.splash
+	div.splash.hidden
 		div.select.select-amor
 			div.img-responsive.amor
 
@@ -51,49 +51,53 @@ body.tv
 	///-Mensaje cuando no se muestra ningun tweet
 
 	//Tweets Amor
-	div.amor.hidden
-		section.container-fluid.franja
-			h1.center-block.text-center #CompartoAmor
+	div.carga-mensajes
+		div.amor
+			section.container-fluid.franja
+				h1.center-block.text-center #CompartoAmor
 
-			div.avatar
-			
-
-		section.container-fluid
-			div.row
-				article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+				div.avatar
 				
-					div.user
-						img.perfil.img-circle.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
 
-						h2 @BRM
+			section.container-fluid
+				div.row
+					article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+					
+						div.user
+							div.content-perfil.img-circle
+								img.perfil.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
 
-					p.tweet.
-						#CompartoAmor @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
-						Te quiero
+							h2 @BRM
+
+						p.tweet.
+							#CompartoAmor @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
+							Te quiero
 
 
 	///-Tweets Amor
 
 	//Tweets Amistad
-	div.amistad.hidden
-		section.container-fluid.franja
-			h1.center-block.text-center #CompartoAmistad
+	div.carga-mensajes
+		div.amistad.hidden
+			section.container-fluid.franja
+				h1.center-block.text-center #CompartoAmistad
 
-			div.avatar
-			
-
-		section.container-fluid
-			div.row
-				article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+				div.avatar
 				
-					div.user
-						img.perfil.img-circle.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
 
-						h2 @BRM
+			section.container-fluid
+				div.row
+					article.col-lg-12.col-md-12.col-sm-12.col-xs-12.mensaje
+					
+						div.user
+							div.content-perfil.img-circle
+								img.perfil.img-responsive(src="https://pbs.twimg.com/profile_images/2611081838/t9n2gitufgi8bf9yhg6i.jpeg", width="215")
 
-					p.tweet.
-						#CompartoAmistad @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
-						Te quiero
+							h2 @BRM
+
+						p.tweet.
+							#CompartoAmistad @lalis_5 muchas gracias por esta amistad, por acompañarme en tantos momentos. Vamos a estar juntas toda la vida.
+							Te quiero
 	///-Tweets Amistad
 
 </html>

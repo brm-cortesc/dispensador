@@ -347,7 +347,7 @@ header .logo img {
   margin: 2em auto;
   width: 70%;
 }
-.user img,
+.user .content-perfil,
 .user h2 {
   display: inline-block;
   vertical-align: middle;
@@ -355,6 +355,11 @@ header .logo img {
 .user h2 {
   font-size: 3em;
   margin-left: 1em;
+}
+.user .content-perfil {
+  max-height: 16em;
+  max-width: max-height;
+  overflow: hidden;
 }
 .select {
   display: inline-block;
