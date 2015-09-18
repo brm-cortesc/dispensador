@@ -228,6 +228,14 @@ $(document).ready(function(){
 
 });
 
+
+jQuery(document).ready(function($) {
+	if ( jQuery(".img-tweet").hasClass('img-completa')  ) {
+
+		jQuery(".mostrar-img").removeClass('img-completa');
+		jQuery(".mostrar-img").html("Ver Imagen");
+
+	};
 //Mostrar fototweet*/
 jQuery(".mostrar-img").on('click',function() {
 
@@ -235,12 +243,8 @@ jQuery(".mostrar-img").on('click',function() {
 	$(this).html("cerrar");
 });
 
-if ( jQuery(".mostrar-img") == "cerrar"  ) {
-
-	jQuery(".mostrar-img").removeClass('img-completa');
-	jQuery(".mostrar-img").html("Ver Imagen");
-
-};
+	
+});
 
 
 /*Animacion buzón */
