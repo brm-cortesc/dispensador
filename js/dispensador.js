@@ -178,20 +178,20 @@ var maxHist=201;
 
 $(document).ready(function(){
 
-	if ( jQuery(".img-tweet").hasClass('img-completa')  ) {
-
-			jQuery(".mostrar-img").removeClass('img-completa');
-			jQuery(".mostrar-img").html("Ver Imagen");
-
-	};
-
 	//Mostrar fototweet*/
 	jQuery(".mostrar-img").on('click',function() {
 
 		$(this).parent().addClass('img-completa');
 		$(this).html("cerrar");
 	});
-	
+
+
+	jQuery(" .mostrar-img").on('click',function() {
+
+		$(this).parent().addClass('img-completa');
+		$(this).html("cerrar");
+	});
+
 
 	$('#mensaje').keyup('keypress',function(){
 	    console.log("Ingreso");
